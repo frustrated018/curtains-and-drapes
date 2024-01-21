@@ -17,27 +17,24 @@ import {
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 import Link from "next/link";
 
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Button } from "@/components/ui/button";
 
 const MainNav = () => {
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
       <section className="flex justify-between items-center mx-5">
         {/* //* Logo */}
-        <Link href="/" className="text-2xl font-bold hidden md:block">
-          C&D
+        <Link href="/" className="text-xl font-bold hidden md:block">
+        Curtains & Drapes
         </Link>
 
         {/* //! Normal Nav Links */}
@@ -79,10 +76,21 @@ const MainNav = () => {
               <GiHamburgerMenu size={24} />
             </SheetTrigger>
             <SheetContent side={"left"}>
-              <SheetHeader>
-                <SheetTitle>Curtains & Drapes</SheetTitle>
-              </SheetHeader>
               {/* //! links */}
+              <div className="flex flex-col gap-2">
+                <Link href="/" className="font-bold">
+                  Curtains & Drapes
+                </Link>
+                <Link href="#" className="text-primary">
+                  About
+                </Link>
+                <Link href="#" className="text-primary">
+                  Contact
+                </Link>
+                <Link href="#" className="text-primary">
+                  Deals
+                </Link>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
