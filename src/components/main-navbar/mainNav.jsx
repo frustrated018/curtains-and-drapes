@@ -33,43 +33,41 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const MainNav = () => {
   return (
-    <nav className="p-[.5rem]">
+    <nav className="p-[.5rem] border border-b-foreground ">
       <section className="flex justify-between items-center mx-5">
         {/* //* Logo */}
-        <h4 className="text-2xl font-bold">C&D</h4>
+        <Link href="/" className="text-2xl font-bold hidden md:block">
+          C&D
+        </Link>
 
-        {/* Links will be added here */}
+        {/* //! Normal Nav Links */}
 
-        {/* <div className="hidden md:flex gap-2">
-          <Link href="#">About</Link>
-          <Link href="#">Contact</Link>
-          <Link href="#">Deals</Link>
-        </div> */}
-
-        <div>
+        <div className="hidden md:block">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/#">
+              <Link href="/#" legacyBehavior passHref>
+                <NavigationMenuItem>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     About
                   </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/#">
+                </NavigationMenuItem>
+              </Link>
+
+              <Link href="/#" legacyBehavior passHref>
+                <NavigationMenuItem>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Contact
                   </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/#">
+                </NavigationMenuItem>
+              </Link>
+
+              <Link href="/#" legacyBehavior passHref>
+                <NavigationMenuItem>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Deals
                   </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+                </NavigationMenuItem>
+              </Link>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -90,7 +88,7 @@ const MainNav = () => {
         </div>
 
         {/* //! Avatar from shadcn */}
-        <div className="">
+        <div className="flex justify-center">
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
