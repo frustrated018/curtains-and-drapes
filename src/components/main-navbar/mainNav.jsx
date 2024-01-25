@@ -95,7 +95,7 @@ const MainNav = () => {
           </div>
         </section>
 
-        <div className="flex justify-center gap-3">
+        <section className="flex justify-center gap-3">
           {/* //! Search Bar */}
 
           <Input type="text" placeholder="Search" />
@@ -103,6 +103,19 @@ const MainNav = () => {
           {/* //! Light and dark mode toggle button */}
           <ThemeToggleButton />
 
+          {/* //! Cart  */}
+          <Sheet>
+            <SheetTrigger>
+              <CiShoppingCart size={24} />
+            </SheetTrigger>
+            <SheetContent side={"right"}>
+              <div className="flex flex-col justify-center items-center pt-[50%]">
+                <CiShoppingCart size={60} />
+                <h2 className="text-4xl font-bold">Oops!</h2>
+                <p className="text-lg font-semibold">No items in your cart.</p>
+              </div>
+            </SheetContent>
+          </Sheet>
 
           {/* //! Avatar from shadcn */}
           <DropdownMenu>
@@ -119,7 +132,7 @@ const MainNav = () => {
               <DropdownMenuItem>Login</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>
+        </section>
       </section>
     </nav>
   );
