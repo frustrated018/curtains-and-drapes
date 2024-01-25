@@ -2,6 +2,6 @@
 
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 
-export function ThemeProvider({ children }) {
-  return <NextThemeProvider>{children}</NextThemeProvider>;
+export function ThemeProvider({ children, ...props }) {
+  return <NextThemeProvider {...props}>{children}</NextThemeProvider>;
 }
