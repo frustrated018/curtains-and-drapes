@@ -18,12 +18,11 @@ import {
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
-import { Button } from "@/components/ui/button";
 
 const MainNav = () => {
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
-      <section className="flex justify-normal items-center mx-5">
+      <section className="flex justify-between md:justify-normal items-center mx-5">
         {/* //* Logo */}
         <Link href="/" className="text-xl font-bold hidden md:block mr-auto">
           Curtains & Drapes
