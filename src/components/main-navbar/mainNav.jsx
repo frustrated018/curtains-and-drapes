@@ -18,22 +18,22 @@ import {
 } from "@/components/ui/navigation-menu";
 import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
 import { Input } from "@/components/ui/input";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { CiShoppingCart } from "react-icons/ci";
+import { IoIosMenu } from "react-icons/io";
 
 const MainNav = () => {
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
-      <section className="flex justify-between items-center mx-5">
+      <section className="flex justify-around md:justify-between items-center">
         {/* //! Left Side */}
-        <section className="flex items-center gap-5">
+        <section id="left" className="flex items-center gap-5">
           {/* //! Logo */}
-          <Link href="/" className="text-xl font-bold hidden md:block mr-auto">
+          <Link href="/" className=" order-2 lg:order-1 text-xl font-bold hidden md:block">
             Curtains & Drapes
           </Link>
 
           {/* //! Normal Nav Links */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block order-2">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -69,10 +69,10 @@ const MainNav = () => {
 
           {/* //! For Mobile devices  */}
           {/* //TODO: Change the links and add other things */}
-          <div className="md:hidden">
+          <div className=" order-1 lg:hidden flex justify-center">
             <Sheet>
               <SheetTrigger>
-                <GiHamburgerMenu size={24} />
+              <IoIosMenu size={30} />
               </SheetTrigger>
               <SheetContent side={"left"}>
                 {/* //! links */}
@@ -95,7 +95,7 @@ const MainNav = () => {
           </div>
         </section>
 
-        <section className="flex justify-center gap-3">
+        <section className="flex items-center gap-3">
           {/* //! Search Bar */}
 
           <Input type="text" placeholder="Search" />
