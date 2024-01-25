@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,80 +16,95 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
+import { Input } from "@/components/ui/input";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { CiShoppingCart } from "react-icons/ci";
 
 const MainNav = () => {
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
-      <section className="flex justify-between md:justify-normal items-center mx-5">
-        {/* //* Logo */}
-        <Link href="/" className="text-xl font-bold hidden md:block mr-auto">
-          Curtains & Drapes
-        </Link>
+      <section className="flex justify-between items-center mx-5">
+        {/* //! Left Side */}
+        <section className="flex items-center gap-5">
+          {/* //! Logo */}
+          <Link href="/" className="text-xl font-bold hidden md:block mr-auto">
+            Curtains & Drapes
+          </Link>
 
-        {/* //! Normal Nav Links */}
+          {/* //! Normal Nav Links */}
+          <div className="hidden md:block">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/#" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      All Products
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/#" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Contact
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/#" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Deals
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
-        <div className="hidden md:block">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/#" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          {/* //! For Mobile devices  */}
+          {/* //TODO: Change the links and add other things */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <GiHamburgerMenu size={24} />
+              </SheetTrigger>
+              <SheetContent side={"left"}>
+                {/* //! links */}
+                <div className="flex flex-col gap-2">
+                  <Link href="/" className="font-bold">
+                    Curtains & Drapes
+                  </Link>
+                  <Link href="#" className="text-primary">
                     About
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link href="/#" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  </Link>
+                  <Link href="#" className="text-primary">
                     Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link href="/#" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  </Link>
+                  <Link href="#" className="text-primary">
                     Deals
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+                  </Link>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </section>
 
-        {/* //! For Mobile devices  */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger>
-              <GiHamburgerMenu size={24} />
-            </SheetTrigger>
-            <SheetContent side={"left"}>
-              {/* //! links */}
-              <div className="flex flex-col gap-2">
-                <Link href="/" className="font-bold">
-                  Curtains & Drapes
-                </Link>
-                <Link href="#" className="text-primary">
-                  About
-                </Link>
-                <Link href="#" className="text-primary">
-                  Contact
-                </Link>
-                <Link href="#" className="text-primary">
-                  Deals
-                </Link>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-
-        {/* //! Avatar from shadcn */}
         <div className="flex justify-center gap-3">
+          {/* //! Search Bar */}
+
+          <Input type="text" placeholder="Search" />
+
+          {/* //! Light and dark mode toggle button */}
           <ThemeToggleButton />
+
+
+          {/* //! Avatar from shadcn */}
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
