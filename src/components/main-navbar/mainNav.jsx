@@ -7,14 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -22,19 +15,17 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
 import Link from "next/link";
-
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Button } from "@/components/ui/button";
+import { ThemeToggleButton } from "../theme-toggle-button/themeToggleButton";
 
 const MainNav = () => {
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
-      <section className="flex justify-between items-center mx-5">
+      <section className="flex justify-normal items-center mx-5">
         {/* //* Logo */}
-        <Link href="/" className="text-xl font-bold hidden md:block">
-        Curtains & Drapes
+        <Link href="/" className="text-xl font-bold hidden md:block mr-auto">
+          Curtains & Drapes
         </Link>
 
         {/* //! Normal Nav Links */}
@@ -96,7 +87,8 @@ const MainNav = () => {
         </div>
 
         {/* //! Avatar from shadcn */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-3">
+          <ThemeToggleButton />
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
