@@ -17,7 +17,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { ThemeToggleButton } from "../theme-toggle-button/themeToggleButton";
+import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
+import { Button } from "@/components/ui/button";
 
 const MainNav = () => {
   return (
@@ -33,29 +34,29 @@ const MainNav = () => {
         <div className="hidden md:block">
           <NavigationMenu>
             <NavigationMenuList>
-              <Link href="/#" legacyBehavior passHref>
-                <NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     About
                   </NavigationMenuLink>
-                </NavigationMenuItem>
-              </Link>
+                </Link>
+              </NavigationMenuItem>
 
-              <Link href="/#" legacyBehavior passHref>
-                <NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Contact
                   </NavigationMenuLink>
-                </NavigationMenuItem>
-              </Link>
+                </Link>
+              </NavigationMenuItem>
 
-              <Link href="/#" legacyBehavior passHref>
-                <NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Deals
                   </NavigationMenuLink>
-                </NavigationMenuItem>
-              </Link>
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
