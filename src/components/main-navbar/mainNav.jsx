@@ -20,6 +20,8 @@ import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleB
 import { Input } from "@/components/ui/input";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
+import Search from "../search/search";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const MainNav = () => {
   return (
@@ -28,7 +30,10 @@ const MainNav = () => {
         {/* //! Left Side */}
         <section id="left" className="flex items-center gap-5">
           {/* //! Logo */}
-          <Link href="/" className=" order-2 lg:order-1 text-xl font-bold hidden md:block">
+          <Link
+            href="/"
+            className=" order-2 lg:order-1 text-xl font-bold hidden md:block"
+          >
             Curtains & Drapes
           </Link>
 
@@ -72,7 +77,7 @@ const MainNav = () => {
           <div className=" order-1 lg:hidden flex justify-center">
             <Sheet>
               <SheetTrigger>
-              <IoIosMenu size={30} />
+                <IoIosMenu size={30} />
               </SheetTrigger>
               <SheetContent side={"left"}>
                 {/* //! links */}
@@ -97,8 +102,8 @@ const MainNav = () => {
 
         <section className="flex items-center gap-3">
           {/* //! Search Bar */}
-
-          <Input type="text" placeholder="Search" />
+          <Search />
+          
 
           {/* //! Light and dark mode toggle button */}
           <ThemeToggleButton />
