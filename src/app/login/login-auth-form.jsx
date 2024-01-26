@@ -35,7 +35,8 @@ const LoginAuthForm = () => {
             </div>
 
             {/* Password */}
-            <div className="relative">
+            <div className="relative grid gap-2">
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 placeholder="****************"
@@ -43,7 +44,7 @@ const LoginAuthForm = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                className="absolute inset-y-0 right-0 pr-3 p flex items-center cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
