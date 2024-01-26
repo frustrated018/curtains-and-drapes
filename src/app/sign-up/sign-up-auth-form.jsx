@@ -9,6 +9,8 @@ import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const SignUpAuthForm = () => {
+
+    //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
