@@ -133,9 +133,9 @@ const MainNav = () => {
             {/* //! Content */}
             <DropdownMenuContent>
               <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/login">Login</Link>
-              </DropdownMenuItem>
+              <Link href="/login">
+                <DropdownMenuItem>Login</DropdownMenuItem>
+              </Link>
             </DropdownMenuContent>
           </DropdownMenu>
         </section>
