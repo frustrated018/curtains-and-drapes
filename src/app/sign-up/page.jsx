@@ -48,7 +48,7 @@ const SignUp = () => {
       {/* //! SignUp From section */}
       <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
         {/* //! Sign up page button */}
-        <Link href="/login" className="hidden lg:block">
+        <Link href="/login" className="hidden xl:block">
           <Button className="absolute top-10 right-10">Login</Button>
         </Link>
 
@@ -57,7 +57,7 @@ const SignUp = () => {
           <h2 className="text-2xl font-semibold tracking-tight">
             Create an account
           </h2>
-          <p className="text-sm text-muted-foreground px-8">
+          <p className="text-sm text-muted-foreground px-10 lg:px-20 xl:px-10">
             Please provide the required information marked with (
             <span className="text-red-600">*</span>) to set up your account.
           </p>
@@ -68,7 +68,7 @@ const SignUp = () => {
         <SignUpAuthForm />
 
         {/* //! Bottom text section */}
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="px-10 lg:px-20 xl:px-10 text-center text-sm text-muted-foreground">
           By clicking continue, you agree to our{" "}
           <Link
             href="/#"
@@ -86,8 +86,8 @@ const SignUp = () => {
           .
         </p>
 
-        {/* //! Hidden switching section for mobile devices */}
-        <p className="px-8 text-center text-sm text-muted-foreground my-3 block lg:hidden">
+        {/* //! Hidden switching section for devices smaller than 1500 px */}
+        <p className="px-8 text-center text-sm text-muted-foreground my-3 block xl:hidden">
           Already have an account?{" "}
           <Link
             href="/login"
