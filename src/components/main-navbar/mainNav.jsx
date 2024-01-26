@@ -17,11 +17,9 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
-import { Input } from "@/components/ui/input";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
 import Search from "../search/search";
-import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const MainNav = () => {
   return (
