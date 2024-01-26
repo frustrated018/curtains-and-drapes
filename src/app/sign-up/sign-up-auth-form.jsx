@@ -1,10 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const SignUpAuthForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
@@ -41,15 +51,23 @@ const SignUpAuthForm = () => {
             </div>
 
             {/* Password */}
-            <div className="grid gap-2">
-              <Label htmlFor="password">
-                Password <span className="text-red-600">*</span>
-              </Label>
+            <div className="relative">
               <Input
                 id="password"
                 placeholder="****************"
-                type="password"
+                type={showPassword ? "text" : "password"}
               />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? (
+                  <IoEyeOff className="h-5 w-5" />
+                ) : (
+                  <IoEye className="h-5 w-5" />
+                )}
+              </button>
             </div>
 
             {/* Photo */}
