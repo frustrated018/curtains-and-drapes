@@ -103,7 +103,6 @@ const MainNav = () => {
         <section className="flex items-center gap-3">
           {/* //! Search Bar */}
           <Search />
-          
 
           {/* //! Light and dark mode toggle button */}
           <ThemeToggleButton />
@@ -134,7 +133,9 @@ const MainNav = () => {
             {/* //! Content */}
             <DropdownMenuContent>
               <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Login</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/login">Login</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </section>
