@@ -3,6 +3,7 @@ import LoginAuthForm from "./login-auth-form";
 import lightBg from "@/assets/login-light.jpg";
 import darkBg from "@/assets/login-dark.jpg";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const Login = () => {
   return (
@@ -40,9 +41,43 @@ const Login = () => {
           </div>
         </div>
       </section>
-      <div className="bg-background w-full lg:w-1/2 relative">
-        <LoginAuthForm />
-      </div>
+      {/* //! Login From section */}
+      <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
+        {/* //! Sign up page button */}
+        <Link href="/sign-up">
+          <Button className="absolute top-10 right-10">Sign Up</Button>
+        </Link>
+        {/* //! Top Text Section */}
+        <div className="flex flex-col text-center space-y-2">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Welcome Back!
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Enter your email & password below to login to your account
+          </p>
+        </div>
+
+        {/* //!Login Form */}
+
+        {/* //! Bottom text section */}
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          By clicking continue, you agree to our{" "}
+          <Link
+            href="/#"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Terms of Service
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/#"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Privacy Policy
+          </Link>
+          .
+        </p>
+      </section>
     </section>
   );
 };
