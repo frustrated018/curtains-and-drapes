@@ -17,7 +17,7 @@ const SignUpAuthForm = () => {
               </Label>
               <Input
                 id="name"
-                placeholder="name@example.com"
+                placeholder="John Doe"
                 type="text"
                 autoCapitalize="none"
                 autoComplete="name"
@@ -47,7 +47,7 @@ const SignUpAuthForm = () => {
               </Label>
               <Input
                 id="password"
-                placeholder="name@example.com"
+                placeholder="****************"
                 type="password"
                 autoCapitalize="none"
                 autoComplete="password"
