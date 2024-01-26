@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
@@ -10,10 +9,26 @@ const SignUpAuthForm = () => {
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
         <form>
+            {/* Name */}
           <div className="grid gap-2">
             <div className="grid gap-1">
+              <Label className="mb-2" htmlFor="name">
+                Name <span className="text-red-600">*</span>
+              </Label>
+              <Input
+                id="name"
+                placeholder="name@example.com"
+                type="text"
+                autoCapitalize="none"
+                autoComplete="name"
+                autoCorrect="off"
+              />
+            </div>
+
+            {/* Email */}
+            <div className="grid gap-1">
               <Label className="mb-2" htmlFor="email">
-                Email
+                Email <span className="text-red-600">*</span>
               </Label>
               <Input
                 id="email"
@@ -21,6 +36,19 @@ const SignUpAuthForm = () => {
                 type="email"
                 autoCapitalize="none"
                 autoComplete="email"
+                autoCorrect="off"
+              />
+            </div>
+            <div className="grid gap-1">
+              <Label className="mb-2" htmlFor="password">
+                Password <span className="text-red-600">*</span>
+              </Label>
+              <Input
+                id="password"
+                placeholder="name@example.com"
+                type="password"
+                autoCapitalize="none"
+                autoComplete="password"
                 autoCorrect="off"
               />
             </div>
