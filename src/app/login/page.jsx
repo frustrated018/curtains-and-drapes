@@ -84,7 +84,7 @@ const Login = () => {
         </p>
 
         {/* //! Hidden switching section for mobile devices */}
-        <p className="px-8 text-center text-sm text-muted-foreground mt-3 block lg:hidden">
+        <p className="px-8 text-center text-sm text-muted-foreground my-3 block lg:hidden">
           Don&apos;t have an account?{" "}
           <Link
             href="/sign-up"
