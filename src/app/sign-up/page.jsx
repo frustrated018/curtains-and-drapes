@@ -46,7 +46,7 @@ const SignUp = () => {
       </section>
 
       {/* //! SignUp From section */}
-      <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
+      <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center py-5 lg:py-10">
         {/* //! Sign up page button */}
         <Link href="/login" className="hidden 2xl:block">
           <Button className="absolute top-10 right-10">Login</Button>
