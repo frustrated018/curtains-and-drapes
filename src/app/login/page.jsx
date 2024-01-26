@@ -47,7 +47,7 @@ const Login = () => {
       {/* //! Login From section */}
       <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
         {/* //! Sign up page button */}
-        <Link href="/sign-up">
+        <Link href="/sign-up" className="hidden lg:block">
           <Button className="absolute top-10 right-10">Sign Up</Button>
         </Link>
 
@@ -81,6 +81,17 @@ const Login = () => {
             Privacy Policy
           </Link>
           .
+        </p>
+
+        {/* //! Hidden switching section for mobile devices */}
+        <p className="px-8 text-center text-sm text-muted-foreground mt-3 block lg:hidden">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/sign-up"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Sign Up
+          </Link>
         </p>
       </section>
     </section>
