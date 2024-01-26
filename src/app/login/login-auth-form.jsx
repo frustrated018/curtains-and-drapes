@@ -9,11 +9,10 @@ const LoginAuthForm = () => {
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
         <form>
+          {/* Email */}
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">
-                Email
-              </Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 placeholder="name@example.com"
@@ -23,6 +22,12 @@ const LoginAuthForm = () => {
                 autoCorrect="off"
               />
             </div>
+            {/* Password */}
+            <div className="grid gap-2">
+              <Label htmlFor="password">Passowrd</Label>
+              <Input id="password" placeholder="**********" type="password" />
+            </div>
+            {/* Submit button */}
             <Button>Log In with Email</Button>
           </div>
         </form>
