@@ -9,7 +9,7 @@ const SignUpAuthForm = () => {
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
         <form>
-            {/* Name */}
+          {/* Name */}
           <div className="grid gap-2">
             <div className="grid gap-1">
               <Label className="mb-2" htmlFor="name">
@@ -39,6 +39,8 @@ const SignUpAuthForm = () => {
                 autoCorrect="off"
               />
             </div>
+
+            {/* Password */}
             <div className="grid gap-1">
               <Label className="mb-2" htmlFor="password">
                 Password <span className="text-red-600">*</span>
@@ -51,6 +53,14 @@ const SignUpAuthForm = () => {
                 autoComplete="password"
                 autoCorrect="off"
               />
+            </div>
+
+            {/* Photo */}
+            <div className="grid gap-1">
+              <Label className="mb-2" htmlFor="photo">
+                Picture
+              </Label>
+              <Input id="photo" type="file" />
             </div>
             <Button>Sign up with Email</Button>
           </div>
