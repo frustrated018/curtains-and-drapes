@@ -65,9 +65,9 @@ const SignUpAuthForm = () => {
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
-                  <IoEyeOff className="h-5 w-5" />
-                ) : (
                   <IoEye className="h-5 w-5" />
+                ) : (
+                  <IoEyeOff className="h-5 w-5" />
                 )}
               </button>
             </div>
