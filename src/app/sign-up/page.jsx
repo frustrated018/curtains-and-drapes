@@ -3,6 +3,7 @@ import lightBg from "@/assets/sign-up-light.jpg";
 import darkBg from "@/assets/sign-up-dark.jpg";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import SignUpAuthForm from "./sign-up-auth-form";
 
 const SignUp = () => {
   return (
@@ -63,6 +64,8 @@ const SignUp = () => {
         </div>
 
         {/* //!SignUp Form */}
+
+        <SignUpAuthForm />
 
         {/* //! Bottom text section */}
         <p className="px-8 text-center text-sm text-muted-foreground">
