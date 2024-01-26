@@ -9,6 +9,9 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
 
 const LoginAuthForm = () => {
+
+  //TODO: Add functionality using firebase
+
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
 
@@ -49,7 +52,7 @@ const LoginAuthForm = () => {
               >
                 {showPassword ? (
                   <IoEye className="h-5 w-5" />
-                  ) : (
+                ) : (
                   <IoEyeOff className="h-5 w-5" />
                 )}
               </button>
