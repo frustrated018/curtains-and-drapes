@@ -11,6 +11,7 @@ import { useState } from "react";
 const LoginAuthForm = () => {
 
   //TODO: Add functionality using firebase
+  //TODO: Fix Astrisk in passowd lable 
 
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);

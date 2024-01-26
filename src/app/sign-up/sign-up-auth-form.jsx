@@ -11,6 +11,8 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 const SignUpAuthForm = () => {
 
     //TODO: Add functionality using firebase
+    //TODO: Fix Astrisk in passowd lable 
+    //TODO: add image hosting for singup page to use as display photo 
 
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
