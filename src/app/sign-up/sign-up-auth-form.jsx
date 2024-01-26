@@ -49,19 +49,16 @@ const SignUpAuthForm = () => {
                 id="password"
                 placeholder="****************"
                 type="password"
-                autoCapitalize="none"
-                autoComplete="password"
-                autoCorrect="off"
               />
             </div>
 
             {/* Photo */}
             <div className="grid gap-2">
-              <Label htmlFor="photo">
-                Picture
-              </Label>
+              <Label htmlFor="photo">Picture</Label>
               <Input id="photo" type="file" />
             </div>
+
+            {/* submit button */}
             <Button>Sign up with Email</Button>
           </div>
         </form>
