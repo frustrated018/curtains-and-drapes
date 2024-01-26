@@ -61,7 +61,7 @@ const SignUpAuthForm = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 p flex items-center cursor-pointer"
+                className="absolute bottom-0 right-0 pr-3 pb-2 flex items-center cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
