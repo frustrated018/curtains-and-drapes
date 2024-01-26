@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const LoginAuthForm = () => {
   return (
@@ -35,12 +37,14 @@ const LoginAuthForm = () => {
           </div>
         </div>
         <div className="flex gap-4 mx-auto ">
-            <Button variant="outline" type="button">
-              Google
-            </Button>
-            <Button variant="outline" type="button">
-              GitHub
-            </Button>
+          <Button variant="outline" className="gap-2">
+            <FcGoogle />
+            Google
+          </Button>
+          <Button variant="outline" className="gap-2">
+            <FaGithub />
+            GitHub
+          </Button>
         </div>
       </div>
     </>

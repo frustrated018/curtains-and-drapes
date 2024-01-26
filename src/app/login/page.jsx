@@ -44,19 +44,18 @@ const Login = () => {
 
       {/* //! Login From section */}
       <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
-
         {/* //! Sign up page button */}
         <Link href="/sign-up">
           <Button className="absolute top-10 right-10">Sign Up</Button>
         </Link>
-        
+
         {/* //! Top Text Section */}
         <div className="flex flex-col text-center space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight">
             Welcome Back!
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Enter your email & password below to login to your account
+          <p className="text-sm text-muted-foreground px-8">
+            Enter your email and password to log in to your account.
           </p>
         </div>
 
