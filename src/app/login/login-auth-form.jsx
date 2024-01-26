@@ -9,9 +9,9 @@ const LoginAuthForm = () => {
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
         <form>
-          <div className="grid gap-2">
-            <div className="grid gap-1">
-              <Label className="sr-only" htmlFor="email">
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">
                 Email
               </Label>
               <Input
