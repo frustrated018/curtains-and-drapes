@@ -17,6 +17,7 @@ const Login = () => {
             alt="Authentication"
             fill
             objectFit="cover"
+            loading="lazy"
             className="block dark:hidden opacity-85"
           />
           {/* //! Dark image */}
@@ -25,6 +26,7 @@ const Login = () => {
             alt="Authentication"
             fill
             objectFit="cover"
+            loading="lazy"
             className="hidden dark:block opacity-50"
           />
           {/* //! Text  */}
