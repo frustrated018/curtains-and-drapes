@@ -52,7 +52,7 @@ const SignUpAuthForm = () => {
                 autoCorrect="off"
               />
             </div>
-            <Button>Log In with Email</Button>
+            <Button>Sign up with Email</Button>
           </div>
         </form>
         <div className="relative">
