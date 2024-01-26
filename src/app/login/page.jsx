@@ -41,12 +41,15 @@ const Login = () => {
           </div>
         </div>
       </section>
+
       {/* //! Login From section */}
       <section className="bg-background w-full lg:w-1/2 relative flex flex-col justify-center items-center">
+
         {/* //! Sign up page button */}
         <Link href="/sign-up">
           <Button className="absolute top-10 right-10">Sign Up</Button>
         </Link>
+        
         {/* //! Top Text Section */}
         <div className="flex flex-col text-center space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight">
@@ -58,6 +61,7 @@ const Login = () => {
         </div>
 
         {/* //!Login Form */}
+        <LoginAuthForm />
 
         {/* //! Bottom text section */}
         <p className="px-8 text-center text-sm text-muted-foreground">
