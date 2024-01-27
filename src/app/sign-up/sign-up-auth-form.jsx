@@ -9,10 +9,9 @@ import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const SignUpAuthForm = () => {
-
-    //TODO: Add functionality using firebase
-    //TODO: Fix Astrisk in passowd lable 
-    //TODO: add image hosting for singup page to use as display photo 
+  //TODO: Add functionality using firebase
+  //TODO: Fix Astrisk in passowd lable
+  //TODO: add image hosting for singup page to use as display photo
 
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +57,9 @@ const SignUpAuthForm = () => {
 
             {/* Password */}
             <div className="relative grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">
+                Password <span className="text-red-600">*</span>
+              </Label>
               <Input
                 id="password"
                 placeholder="****************"
