@@ -30,16 +30,16 @@ const SignUp = () => {
             className="hidden dark:block opacity-50"
           />
           {/* //! Text  */}
-
+          {/* //!LOGO */}
           <Link href="/" className="text-3xl font-bold absolute top-10 left-10">
-            Curtains & Drapes
+            Logo
           </Link>
 
           <div className="absolute bottom-10 left-10">
             <p className="w-[80%] text-lg font-semibold">
-              Transform your home with our exquisite collection of curtains,
-              drapes, mattresses, pillows, and more. Sign up now for exclusive
-              deals!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+              vitae perferendis esse explicabo sit rem voluptatem qui deleniti
+              ullam aliquam velit, necessitatibus est distinctio.
             </p>
           </div>
         </div>
