@@ -12,17 +12,22 @@ import * as Yup from "yup";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const SignUpAuthForm = () => {
   //TODO: add image hosting for this page to use as display photo
 
   //! Added functionality using firebase
   const [createUser] = useCreateUserWithEmailAndPassword(auth);
+  const router = useRouter()
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
     try {
       const res = await createUser(values.email, values.password);
+
+      //* if there is showing success toast and navigating
+
       if (res.user) {
         toast.success(`Hi ${values.name}! Welcome to our site`, {
           position: "top-right",
@@ -35,20 +40,9 @@ const SignUpAuthForm = () => {
           theme: "colored",
           transition: Bounce,
         });
-      }
-      //? do i need one here? hmmmm🤔
-      else {
-        toast.error(`Sorry We are having some issues`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
+
+        //! routing to home
+        router.push("/");
       }
     } catch (e) {
       toast.error(`${e}`, {
@@ -62,6 +56,7 @@ const SignUpAuthForm = () => {
         theme: "colored",
         transition: Bounce,
       });
+      console.log(e);
     }
   };
 
