@@ -9,6 +9,9 @@ export const metadata = {
     "Nextjs and Shadcn ui starter template with built in navbar login and signup components. Also comes with pre-enabled dark mode toggle",
 };
 
+
+//TODO: There is a hydration error in the body of this template. Need to find and fix it.
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
