@@ -1,6 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-toggle-button/theme-provider";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,6 +19,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="system">
           {children}
         </ThemeProvider>
+        <ToastContainer />
       </body>
     </html>
   );

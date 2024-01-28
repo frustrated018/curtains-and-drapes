@@ -11,28 +11,61 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
+import { Bounce, toast } from "react-toastify";
 
 const SignUpAuthForm = () => {
   //TODO: add image hosting for this page to use as display photo
-  
+
   //! Added functionality using firebase
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [createUser] = useCreateUserWithEmailAndPassword(auth);
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
     try {
-      const res = await createUserWithEmailAndPassword(
-        values.email,
-        values.password
-      );
-      console.log({ res });
+      const res = await createUser(values.email, values.password);
+      if (res.user) {
+        toast.success(`Hi ${values.name}! Welcome to our site`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      }
+      //? do i need one here? hmmmm🤔
+      else {
+        toast.error(`Sorry We are having some issues`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      }
     } catch (e) {
-      console.error(e);
+      toast.error(`${e}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
   //* Form validation and submission with Formik
-
   // Initial Values
   const initialValues = {
     name: "",
