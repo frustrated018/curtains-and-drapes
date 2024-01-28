@@ -16,12 +16,12 @@ const SignUpAuthForm = () => {
   //TODO: Add functionality using firebase
   //TODO: add image hosting for singup page to use as display photo
 
-  const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
     console.log(values.email);
+    console.log(values.password);
   };
 
   //* Form validation and submission with Formik
