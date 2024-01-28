@@ -79,7 +79,7 @@ const SignUpAuthForm = () => {
               />
               {/* //! Formik error messaage */}
               {formik.touched.name && formik.errors.name ? (
-                <div>{formik.errors.name}</div>
+                <div className="text-sm text-red-500 h-4">{formik.errors.name}</div>
               ) : null}
             </div>
 
@@ -101,7 +101,9 @@ const SignUpAuthForm = () => {
               />
               {/* //! Formik error messaage */}
               {formik.touched.email && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
+                <div className="text-sm text-red-500 h-4">
+                  {formik.errors.email}
+                </div>
               ) : null}
             </div>
 
@@ -134,7 +136,9 @@ const SignUpAuthForm = () => {
             </div>
             {/* //! Formik error messaage */}
             {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
+              <div className="text-sm text-red-500 h-8 sm:h-4">
+                {formik.errors.password}
+              </div>
             ) : null}
 
             {/* Photo //! Disabled temporarily */}
