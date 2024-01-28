@@ -32,7 +32,7 @@ const MainNav = () => {
             href="/"
             className=" order-2 lg:order-1 text-xl font-bold hidden md:block"
           >
-            Logo
+            Curtains & Drapes
           </Link>
 
           {/* //! Normal Nav Links */}

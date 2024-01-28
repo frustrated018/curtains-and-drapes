@@ -30,16 +30,15 @@ const Login = () => {
             className="hidden dark:block opacity-50"
           />
           {/* //! Text  */}
-          {/* //!LOGO */}
+
           <Link href="/" className="text-3xl font-bold absolute top-10 left-10">
-            Logo
+            Curtains & Drapes
           </Link>
 
           <div className="absolute bottom-10 left-10">
             <p className="w-[80%] text-lg font-semibold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sunt
-              illum suscipit ex velit quidem, ducimus ratione quos totam soluta
-              saepe, voluptates nulla nesciunt distinctio!
+              Unlock a world of comfort and style. Join us to discover the
+              finest home essentials for a truly inviting space.
             </p>
           </div>
         </div>
