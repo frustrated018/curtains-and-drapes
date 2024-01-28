@@ -13,15 +13,22 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 
 const SignUpAuthForm = () => {
-  //TODO: Add functionality using firebase
-  //TODO: add image hosting for singup page to use as display photo
-
+  //TODO: add image hosting for this page to use as display photo
+  
+  //! Added functionality using firebase
   const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
-    console.log(values.email);
-    console.log(values.password);
+    try {
+      const res = await createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+      console.log({ res });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   //* Form validation and submission with Formik
