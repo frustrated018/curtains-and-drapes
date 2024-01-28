@@ -4,8 +4,9 @@ import { ThemeProvider } from "@/components/theme-toggle-button/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Curtains & Drapes",
-  description: "One stop home goods store.",
+  title: "Starter Template",
+  description:
+    "Nextjs and Shadcn ui starter template with built in navbar login and signup components. Also comes with pre-enabled dark mode toggle",
 };
 
 export default function RootLayout({ children }) {
