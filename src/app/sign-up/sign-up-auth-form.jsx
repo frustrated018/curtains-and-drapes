@@ -7,11 +7,47 @@ import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const SignUpAuthForm = () => {
   //TODO: Add functionality using firebase
-  //TODO: Fix Astrisk in passowd lable
   //TODO: add image hosting for singup page to use as display photo
+
+  //* Form validation and submission with Formik
+
+  // Initial Values
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+  };
+
+  // YUP validation schema
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(3, "Please enter your full name")
+      .required("Your name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .matches(
+        /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/,
+        "Password must contain at least one uppercase letter and one special character"
+      )
+      .required("Password is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      const stringValues = JSON.stringify(values);
+      console.log(stringValues);
+    },
+  });
 
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +59,7 @@ const SignUpAuthForm = () => {
   return (
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           {/* Name */}
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -37,7 +73,14 @@ const SignUpAuthForm = () => {
                 autoCapitalize="none"
                 autoComplete="name"
                 autoCorrect="off"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {/* //! Formik error messaage */}
+              {formik.touched.name && formik.errors.name ? (
+                <div>{formik.errors.name}</div>
+              ) : null}
             </div>
 
             {/* Email */}
@@ -52,7 +95,14 @@ const SignUpAuthForm = () => {
                 autoCapitalize="none"
                 autoComplete="email"
                 autoCorrect="off"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {/* //! Formik error messaage */}
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
             </div>
 
             {/* Password */}
@@ -64,7 +114,12 @@ const SignUpAuthForm = () => {
                 id="password"
                 placeholder="****************"
                 type={showPassword ? "text" : "password"}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+
+              {/* Visibility Toggle */}
               <button
                 type="button"
                 className="absolute bottom-0 right-0 pr-3 pb-2 flex items-center cursor-pointer"
@@ -77,15 +132,19 @@ const SignUpAuthForm = () => {
                 )}
               </button>
             </div>
+            {/* //! Formik error messaage */}
+            {formik.touched.password && formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
 
-            {/* Photo */}
-            <div className="grid gap-2">
+            {/* Photo //! Disabled temporarily */}
+            {/* <div className="grid gap-2">
               <Label htmlFor="photo">Picture</Label>
               <Input id="photo" type="file" />
-            </div>
+            </div> */}
 
             {/* submit button */}
-            <Button>Sign up with Email</Button>
+            <Button type="submit">Sign up with Email</Button>
           </div>
         </form>
         <div className="relative">
