@@ -4,13 +4,9 @@ import { ThemeProvider } from "@/components/theme-toggle-button/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Starter Template",
-  description:
-    "Nextjs and Shadcn ui starter template with built in navbar login and signup components. Also comes with pre-enabled dark mode toggle",
+  title: "Curtains & Drapes",
+  description: "One stop home goods store.",
 };
-
-
-//TODO: There is a hydration error in the body of this template. Need to find and fix it.
 
 export default function RootLayout({ children }) {
   return (
