@@ -9,10 +9,20 @@ import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/config";
 
 const SignUpAuthForm = () => {
   //TODO: Add functionality using firebase
   //TODO: add image hosting for singup page to use as display photo
+
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  //! User Signin with email and password
+  const handleEmailSignUp = async (values) => {
+    console.log(values.email);
+  };
 
   //* Form validation and submission with Formik
 
@@ -43,9 +53,7 @@ const SignUpAuthForm = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(values.email);
-    },
+    onSubmit: handleEmailSignUp,
   });
 
   //! visibility toggle
