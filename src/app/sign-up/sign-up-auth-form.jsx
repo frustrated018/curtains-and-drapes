@@ -44,8 +44,7 @@ const SignUpAuthForm = () => {
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      const stringValues = JSON.stringify(values);
-      console.log(stringValues);
+      console.log(values.email);
     },
   });
 
@@ -79,7 +78,9 @@ const SignUpAuthForm = () => {
               />
               {/* //! Formik error messaage */}
               {formik.touched.name && formik.errors.name ? (
-                <div className="text-sm text-red-500 h-4">{formik.errors.name}</div>
+                <div className="text-sm text-red-500 h-4">
+                  {formik.errors.name}
+                </div>
               ) : null}
             </div>
 

@@ -12,6 +12,7 @@ const SignUp = () => {
       <section className="w-1/2 hidden lg:block relative">
         <div className="max-h-screen">
           {/* //! Light image */}
+          {/* //TODO: image is missing position and sizes prop */}
           <Image
             src={lightBg}
             alt="Authentication"
