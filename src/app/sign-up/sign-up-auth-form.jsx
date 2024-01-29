@@ -16,19 +16,24 @@ import { useRouter } from "next/navigation";
 
 const SignUpAuthForm = () => {
   //TODO: add image hosting for this page to use as display photo
+  //TODO: Adding a mongodb databse and storing user data when they signup.
 
   //! Added functionality using firebase
-  const [createUser] = useCreateUserWithEmailAndPassword(auth);
-  const router = useRouter()
+  const [createUserWithEmailAndPassword, user] =
+    useCreateUserWithEmailAndPassword(auth);
+  const router = useRouter();
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
     try {
-      const res = await createUser(values.email, values.password);
+      const res = await createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      );
 
-      //* if there is showing success toast and navigating
+      //* if there is user showing success toast and navigating
 
-      if (res.user) {
+      if (user) {
         toast.success(`Hi ${values.name}! Welcome to our site`, {
           position: "top-right",
           autoClose: 5000,
@@ -42,7 +47,7 @@ const SignUpAuthForm = () => {
         });
 
         //! routing to home
-        router.push("/");
+        // router.push("/");
       }
     } catch (e) {
       toast.error(`${e}`, {

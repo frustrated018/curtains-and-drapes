@@ -7,10 +7,49 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/config";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const LoginAuthForm = () => {
+  //! Adding functionality using firebase
 
-  //TODO: Add functionality using firebase
+  const [signInWithEmailAndPassword, user] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleLogin = async (values) => {
+    //* Login logic and toast and rerouting
+    console.log(values);
+  };
+
+  //! Formik Logic
+  //* Form validation and submission with Formik
+  // Initial Values
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  // YUP validation schema
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .matches(
+        /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/,
+        "Password must contain at least one uppercase letter and one special character"
+      )
+      .required("Password is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: handleLogin,
+  });
 
   //! visibility toggle
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +61,7 @@ const LoginAuthForm = () => {
   return (
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           {/* Email */}
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -34,7 +73,16 @@ const LoginAuthForm = () => {
                 autoCapitalize="none"
                 autoComplete="email"
                 autoCorrect="off"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {/* //! Formik error messaage */}
+              {formik.touched.email && formik.errors.email ? (
+                <div className="text-sm text-red-500">
+                  {formik.errors.email}
+                </div>
+              ) : null}
             </div>
 
             {/* Password */}
@@ -44,6 +92,9 @@ const LoginAuthForm = () => {
                 id="password"
                 placeholder="****************"
                 type={showPassword ? "text" : "password"}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               <button
                 type="button"
@@ -57,6 +108,12 @@ const LoginAuthForm = () => {
                 )}
               </button>
             </div>
+            {/* //! Formik error messaage */}
+            {formik.touched.password && formik.errors.password ? (
+              <div className="text-sm text-red-500">
+                {formik.errors.password}
+              </div>
+            ) : null}
 
             {/* Submit button */}
             <Button>Log In with Email</Button>

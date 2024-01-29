@@ -20,8 +20,14 @@ import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleB
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
 import Search from "../search/search";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/config";
 
 const MainNav = () => {
+  // Moinitoring user login or signup
+  const [user] = useAuthState(auth);
+  // console.log(user);
+
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
       <section className="flex justify-around md:justify-between items-center">
