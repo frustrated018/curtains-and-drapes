@@ -11,11 +11,15 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Bounce, toast } from "react-toastify";
 
 const LoginAuthForm = () => {
   //! Adding functionality using firebase
 
-  const [signInWithEmailAndPassword, user] =
+  //TODO: If user is present people shouldn't be able to access this page through the url
+  //TODO: Add a loading and success state
+
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const handleLogin = async (values) => {
@@ -27,10 +31,30 @@ const LoginAuthForm = () => {
       );
 
       if (user) {
-        console.log(`login successful${user}`);
+        toast.success(
+          `Hi ${user.displayName ? user.displayName : "User"}! Welcome back.`,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          }
+        );
       }
-    } catch (error) {
-      console.log(error);
+      if (error) {
+        toast.error(`Error: ${error}`, {
+          theme: "colored",
+        });
+      }
+    } catch (e) {
+      toast.error(`${e}`, {
+        theme: "colored",
+      });
     }
   };
 
