@@ -20,7 +20,18 @@ const LoginAuthForm = () => {
 
   const handleLogin = async (values) => {
     //* Login logic and toast and rerouting
-    console.log(values);
+    try {
+      const res = await signInWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+
+      if (user) {
+        console.log(`login successful${user}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //! Formik Logic
@@ -116,7 +127,7 @@ const LoginAuthForm = () => {
             ) : null}
 
             {/* Submit button */}
-            <Button>Log In with Email</Button>
+            <Button type="submit">Log In with Email</Button>
           </div>
         </form>
         <div className="relative">

@@ -20,13 +20,16 @@ import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleB
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
 import Search from "../search/search";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
+
+//TODO: Seperate which parts of this navbar are static and which are not.
 
 const MainNav = () => {
   // Moinitoring user login or signup
   const [user] = useAuthState(auth);
-  // console.log(user);
+  console.log(user);
+  const [signOut, loading, error] = useSignOut(auth);
 
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
@@ -140,6 +143,18 @@ const MainNav = () => {
               <Link href="/login">
                 <DropdownMenuItem>Login</DropdownMenuItem>
               </Link>
+              <DropdownMenuItem>
+                <button
+                  onClick={async () => {
+                    const success = await signOut();
+                    if (success) {
+                      alert("You are sign out");
+                    }
+                  }}
+                >
+                  Log Out
+                </button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </section>
