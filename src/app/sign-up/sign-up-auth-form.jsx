@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -18,8 +18,10 @@ const SignUpAuthForm = () => {
   //TODO: add image hosting for this page to use as display photo
   //TODO: Adding a mongodb databse and storing user data when they signup.
 
+  //! TODO: Need to add a loading state to stop the user from multiple requests.
+
   //! Added functionality using firebase
-  const [createUserWithEmailAndPassword, user] =
+  const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const router = useRouter();
 
@@ -30,27 +32,19 @@ const SignUpAuthForm = () => {
         values.email,
         values.password
       );
-
-      //* if there is user showing success toast and navigating
-
-      if (user) {
-        toast.success(`Hi ${values.name}! Welcome to our site`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
-
-        //! routing to home
-        // router.push("/");
-      }
+      //TODO: If res then update users displayname and photo
     } catch (e) {
-      toast.error(`${e}`, {
+      toast.error(`Catch Block Error: ${e}`, {
+        theme: "colored",
+      });
+      console.log(e);
+    }
+  };
+
+  //! Conditions for successful and failed signup attempts
+  useEffect(() => {
+    if (user) {
+      toast.success(`Hi ${user.displayName ? user.displayName : "User"}! Welcome to our site`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -61,9 +55,15 @@ const SignUpAuthForm = () => {
         theme: "colored",
         transition: Bounce,
       });
-      console.log(e);
+
+      //! routing to home
+      router.push("/");
     }
-  };
+    if (error) {
+      console.log(error);
+      toast.error(`Signup Error: ${error}`);
+    }
+  }, [user, router, error]);
 
   //* Form validation and submission with Formik
   // Initial Values
@@ -126,9 +126,7 @@ const SignUpAuthForm = () => {
               />
               {/* //! Formik error messaage */}
               {formik.touched.name && formik.errors.name ? (
-                <div className="text-sm text-red-500 h-4">
-                  {formik.errors.name}
-                </div>
+                <div className="text-sm text-red-500">{formik.errors.name}</div>
               ) : null}
             </div>
 
@@ -150,7 +148,7 @@ const SignUpAuthForm = () => {
               />
               {/* //! Formik error messaage */}
               {formik.touched.email && formik.errors.email ? (
-                <div className="text-sm text-red-500 h-4">
+                <div className="text-sm text-red-500">
                   {formik.errors.email}
                 </div>
               ) : null}
@@ -185,7 +183,7 @@ const SignUpAuthForm = () => {
             </div>
             {/* //! Formik error messaage */}
             {formik.touched.password && formik.errors.password ? (
-              <div className="text-sm text-red-500 h-8 sm:h-4">
+              <div className="text-sm text-red-500">
                 {formik.errors.password}
               </div>
             ) : null}

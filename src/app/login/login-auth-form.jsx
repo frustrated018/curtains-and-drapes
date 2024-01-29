@@ -6,12 +6,13 @@ import { Label } from "@/components/ui/label";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const LoginAuthForm = () => {
   //! Adding functionality using firebase
@@ -19,44 +20,50 @@ const LoginAuthForm = () => {
   //TODO: If user is present people shouldn't be able to access this page through the url
   //TODO: Add a loading and success state
 
+  //! TODO: Need to add a loading state to stop the user from multiple requests.
+
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const handleLogin = async (values) => {
-    //* Login logic and toast and rerouting
-    try {
-      const res = await signInWithEmailAndPassword(
-        values.email,
-        values.password
-      );
+  const router = useRouter();
 
-      if (user) {
-        toast.success(
-          `Hi ${user.displayName ? user.displayName : "User"}! Welcome back.`,
-          {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-          }
-        );
-      }
-      if (error) {
-        toast.error(`Error: ${error}`, {
-          theme: "colored",
-        });
-      }
+  //! handleing login logic
+  const handleLogin = async (values) => {
+    try {
+      await signInWithEmailAndPassword(values.email, values.password);
     } catch (e) {
+      console.log(e);
       toast.error(`${e}`, {
         theme: "colored",
       });
     }
   };
+
+  //! Conditions for successful and failed login attempts
+  useEffect(() => {
+    if (user) {
+      toast.success(
+        `Hi ${user.displayName ? user.displayName : "User"}! Welcome back.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        }
+      );
+      //! Redirecting the user
+      router.push("/");
+    } else if (error) {
+      toast.error(`Error: ${error}`, {
+        theme: "colored",
+      });
+    }
+  }, [user, error, router]);
 
   //! Formik Logic
   //* Form validation and submission with Formik
