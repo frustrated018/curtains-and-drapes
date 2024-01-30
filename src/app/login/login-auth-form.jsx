@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
+  useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
@@ -22,13 +23,11 @@ const LoginAuthForm = () => {
   //! Adding functionality using firebase
 
   //TODO: If user is present people shouldn't be able to access this page through the url
-  //TODO: Add a loading and success state
-
-  //! TODO: Need to add a loading state to stop the user from multiple requests.
 
   const [user] = useAuthState(auth);
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
 
   const router = useRouter();
 
@@ -44,10 +43,19 @@ const LoginAuthForm = () => {
     }
   };
 
-  //! Handleing google login
-  const handleGoogleLogin = async (values) => {
+  //! Handling google login
+  const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogle(values.email, values.password);
+      await signInWithGoogle();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //! Handling Github login
+  const handleGithubLogin = async () => {
+    try {
+      await signInWithGithub();
     } catch (e) {
       console.log(e);
     }
@@ -190,7 +198,11 @@ const LoginAuthForm = () => {
             <FcGoogle />
             Google
           </Button>
-          <Button variant="outline" className="gap-2">
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={handleGithubLogin}
+          >
             <FaGithub />
             GitHub
           </Button>

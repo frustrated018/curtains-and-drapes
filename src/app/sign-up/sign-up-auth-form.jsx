@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
@@ -29,6 +30,7 @@ const SignUpAuthForm = () => {
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
   const router = useRouter();
 
   //! User Signin with email and password
@@ -48,9 +50,18 @@ const SignUpAuthForm = () => {
   };
 
   //! Handleing google login
-  const handleGoogleLogin = async (values) => {
+  const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogle(values.email, values.password);
+      await signInWithGoogle();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //! Handleing google login
+  const handleGithubLogin = async () => {
+    try {
+      await signInWithGithub();
     } catch (e) {
       console.log(e);
     }
@@ -233,7 +244,11 @@ const SignUpAuthForm = () => {
             <FcGoogle />
             Google
           </Button>
-          <Button variant="outline" className="gap-2">
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={handleGithubLogin}
+          >
             <FaGithub />
             GitHub
           </Button>
