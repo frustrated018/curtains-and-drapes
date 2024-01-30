@@ -9,7 +9,11 @@ import { FcGoogle } from "react-icons/fc";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -21,8 +25,10 @@ const SignUpAuthForm = () => {
   //! TODO: Need to add a loading state to stop the user from multiple requests.
 
   //! Added functionality using firebase
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [user] = useAuthState(auth);
+  const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
   const router = useRouter();
 
   //! User Signin with email and password
@@ -41,29 +47,39 @@ const SignUpAuthForm = () => {
     }
   };
 
+  //! Handleing google login
+  const handleGoogleLogin = async (values) => {
+    try {
+      await signInWithGoogle(values.email, values.password);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   //! Conditions for successful and failed signup attempts
   useEffect(() => {
     if (user) {
-      toast.success(`Hi ${user.displayName ? user.displayName : "User"}! Welcome to our site`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      toast.success(
+        `Hi ${
+          user.displayName ? user.displayName : "User"
+        }! Welcome to our site`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        }
+      );
 
       //! routing to home
       router.push("/");
     }
-    if (error) {
-      console.log(error);
-      toast.error(`Signup Error: ${error}`);
-    }
-  }, [user, router, error]);
+  }, [user, router]);
 
   //* Form validation and submission with Formik
   // Initial Values
@@ -209,7 +225,11 @@ const SignUpAuthForm = () => {
           </div>
         </div>
         <div className="flex gap-4 mx-auto ">
-          <Button variant="outline" className="gap-2">
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={handleGoogleLogin}
+          >
             <FcGoogle />
             Google
           </Button>

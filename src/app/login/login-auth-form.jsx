@@ -7,7 +7,11 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -22,12 +26,13 @@ const LoginAuthForm = () => {
 
   //! TODO: Need to add a loading state to stop the user from multiple requests.
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [user] = useAuthState(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const router = useRouter();
 
-  //! handleing login logic
+  //! handleing Email & password login logic
   const handleLogin = async (values) => {
     try {
       await signInWithEmailAndPassword(values.email, values.password);
@@ -36,6 +41,15 @@ const LoginAuthForm = () => {
       toast.error(`${e}`, {
         theme: "colored",
       });
+    }
+  };
+
+  //! Handleing google login
+  const handleGoogleLogin = async (values) => {
+    try {
+      await signInWithGoogle(values.email, values.password);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -58,12 +72,8 @@ const LoginAuthForm = () => {
       );
       //! Redirecting the user
       router.push("/");
-    } else if (error) {
-      toast.error(`Error: ${error}`, {
-        theme: "colored",
-      });
     }
-  }, [user, error, router]);
+  }, [user, router]);
 
   //! Formik Logic
   //* Form validation and submission with Formik
@@ -172,7 +182,11 @@ const LoginAuthForm = () => {
           </div>
         </div>
         <div className="flex gap-4 mx-auto ">
-          <Button variant="outline" className="gap-2">
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={handleGoogleLogin}
+          >
             <FcGoogle />
             Google
           </Button>

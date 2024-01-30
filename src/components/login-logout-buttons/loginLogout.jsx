@@ -16,7 +16,7 @@ const LoginLogout = () => {
       const success = await signOut();
 
       if (success) {
-        toast.success(`Log Out successful`, {
+        toast.success(`Log out successful`, {
           theme: "colored",
         });
       }
