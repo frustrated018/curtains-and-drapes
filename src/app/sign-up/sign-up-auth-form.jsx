@@ -14,6 +14,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { Bounce, toast } from "react-toastify";
@@ -29,6 +30,8 @@ const SignUpAuthForm = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
+  const [updateProfile] = useUpdateProfile(auth);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const router = useRouter();
 
   //! User Signin with email and password
@@ -38,7 +41,10 @@ const SignUpAuthForm = () => {
         values.email,
         values.password
       );
-      //TODO: If res then update users displayname and photo
+      //TODO: If res then update users and photo
+      const displayName = values.name;
+      const success = await updateProfile({ displayName });
+      setUpdateSuccess(success);
     } catch (e) {
       toast.error(`Catch Block Error: ${e}`, {
         theme: "colored",
@@ -67,7 +73,7 @@ const SignUpAuthForm = () => {
 
   //! Conditions for successful and failed signup attempts
   useEffect(() => {
-    if (user) {
+    if (user && updateSuccess) {
       toast.success(
         `Hi ${
           user.displayName ? user.displayName : "User"
@@ -88,7 +94,7 @@ const SignUpAuthForm = () => {
       //! routing to home
       router.push("/");
     }
-  }, [user, router]);
+  }, [user, router, updateSuccess]);
 
   //* Form validation and submission with Formik
   // Initial Values

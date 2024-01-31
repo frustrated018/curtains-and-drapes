@@ -21,10 +21,14 @@ import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
 import Search from "../search/search";
 import LoginLogout from "@/components/login-logout-buttons/loginLogout";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/config";
 
 //TODO: Seperate which parts of this navbar are static and which are not.
 
 const MainNav = () => {
+  const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
       <section className="flex justify-around md:justify-between items-center">
@@ -126,8 +130,15 @@ const MainNav = () => {
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>C&S</AvatarFallback>
+                <AvatarImage
+                  src={
+                    user.photoURL
+                      ? user.photoURL
+                      : "https://source.unsplash.com/white-french-bulldog-puppy-covered-with-white-textile-IeT84oak7HQ"
+                  }
+                  alt="user profile image"
+                />
+                <AvatarFallback>DP</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
 
