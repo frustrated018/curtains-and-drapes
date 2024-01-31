@@ -247,9 +247,11 @@ const SignUpAuthForm = () => {
               <Input
                 id="photo"
                 type="file"
-                onChange={(event) =>
-                  formik.setFieldValue("photo", event.currentTarget.files[0])
-                }
+                accept="image/*"
+                onChange={(event) => {
+                  // console.log(event.target.files);
+                  formik.setFieldValue("photo", event.currentTarget.files[0]);
+                }}
                 onBlur={formik.handleBlur}
               />
             </div>
