@@ -18,21 +18,24 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const LoginAuthForm = () => {
   //! Adding functionality using firebase
 
   //TODO: If user is present people shouldn't be able to access this page through the url
 
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const router = useRouter();
 
   //! handleing Email & password login logic
   const handleLogin = async (values) => {
+    setFormSubmitted(true);
     try {
       await signInWithEmailAndPassword(values.email, values.password);
     } catch (e) {
@@ -175,8 +178,15 @@ const LoginAuthForm = () => {
               </div>
             ) : null}
 
-            {/* Submit button */}
-            <Button type="submit">Log In with Email</Button>
+            {/* Conditional submit button */}
+            {formSubmitted || loading ? (
+              <Button disabled>
+                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </Button>
+            ) : (
+              <Button type="submit">Log in with Email</Button>
+            )}
           </div>
         </form>
         <div className="relative">
