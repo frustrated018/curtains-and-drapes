@@ -23,8 +23,6 @@ const SignUpAuthForm = () => {
   //TODO: add image hosting for this page to use as display photo
   //TODO: Adding a mongodb databse and storing user data when they signup.
 
-  //! TODO: Need to add a loading state to stop the user from multiple requests.
-
   //! Added functionality using firebase
   const [user] = useAuthState(auth);
   const [createUserWithEmailAndPassword] =

@@ -16,19 +16,14 @@ const SignUp = () => {
           <Image
             src={lightBg}
             alt="Authentication"
-            fill
-            objectFit="cover"
-            loading="lazy"
-            className="block dark:hidden opacity-80"
+            className="block dark:hidden opacity-80 h-screen object-cover"
           />
           {/* //! Dark image */}
           <Image
             src={darkBg}
             alt="Authentication"
-            fill
-            objectFit="cover"
             loading="lazy"
-            className="hidden dark:block opacity-50"
+            className="hidden dark:block opacity-50 h-screen object-cover"
           />
           {/* //! Text  */}
 

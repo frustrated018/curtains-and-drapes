@@ -14,20 +14,16 @@ const Login = () => {
           {/* //! Light image */}
           <Image
             src={lightBg}
-            alt="Authentication"
-            fill
-            objectFit="cover"
+            alt="login image light"
             loading="lazy"
-            className="block dark:hidden opacity-85"
+            className="block dark:hidden opacity-85 h-screen object-cover"
           />
           {/* //! Dark image */}
           <Image
             src={darkBg}
-            alt="Authentication"
-            fill
-            objectFit="cover"
+            alt="login image dark"
             loading="lazy"
-            className="hidden dark:block opacity-50"
+            className="hidden dark:block opacity-50 h-screen object-cover"
           />
           {/* //! Text  */}
 
