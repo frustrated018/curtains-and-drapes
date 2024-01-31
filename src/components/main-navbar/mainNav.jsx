@@ -28,7 +28,7 @@ import { auth } from "@/firebase/config";
 
 const MainNav = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+
   return (
     <nav className="p-[.5rem] border border-b-foreground ">
       <section className="flex justify-around md:justify-between items-center">
