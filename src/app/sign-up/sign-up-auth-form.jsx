@@ -20,10 +20,9 @@ import { auth } from "@/firebase/config";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-const SignUpAuthForm = () => {
-  //TODO: add image hosting for this page to use as display photo
-  //TODO: Adding a mongodb databse and storing user data when they signup.
+//TODO: Adding a mongodb databse and storing user data when they signup.
 
+const SignUpAuthForm = () => {
   //! Added functionality using firebase
   const [user] = useAuthState(auth);
   const [createUserWithEmailAndPassword] =
@@ -36,20 +35,39 @@ const SignUpAuthForm = () => {
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
+    const data = new FormData();
+    data.append("image", values.photo);
+
     try {
+      //! Uploading photo to Image bb
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IBB_API_KEY}`,
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const imageData = await response.json();
+
+      //! Creating User
       const res = await createUserWithEmailAndPassword(
         values.email,
         values.password
       );
-      //TODO: If res then update users and photo
+
+      //! Updating user Profile image and display name
       const displayName = values.name;
-      const success = await updateProfile({ displayName });
+      const success = await updateProfile({
+        displayName,
+        photoURL: imageData?.data?.url,
+      });
+
       setUpdateSuccess(success);
     } catch (e) {
       toast.error(`Catch Block Error: ${e}`, {
         theme: "colored",
       });
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -102,6 +120,7 @@ const SignUpAuthForm = () => {
     name: "",
     email: "",
     password: "",
+    photo: "",
   };
 
   // YUP validation schema
@@ -137,7 +156,7 @@ const SignUpAuthForm = () => {
   return (
     <>
       <div className="grid gap-6 my-5 w-[80%] md:w-1/2">
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
           {/* Name */}
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -219,11 +238,18 @@ const SignUpAuthForm = () => {
               </div>
             ) : null}
 
-            {/* Photo //! Disabled temporarily */}
-            {/* <div className="grid gap-2">
+            {/* Photo upload */}
+            <div className="grid gap-2">
               <Label htmlFor="photo">Picture</Label>
-              <Input id="photo" type="file" />
-            </div> */}
+              <Input
+                id="photo"
+                type="file"
+                onChange={(event) =>
+                  formik.setFieldValue("photo", event.currentTarget.files[0])
+                }
+                onBlur={formik.handleBlur}
+              />
+            </div>
 
             {/* submit button */}
             <Button type="submit">Sign up with Email</Button>
