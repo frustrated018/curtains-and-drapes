@@ -132,7 +132,7 @@ const MainNav = () => {
               <Avatar>
                 <AvatarImage
                   src={
-                    user.photoURL
+                    user?.photoURL
                       ? user.photoURL
                       : "https://source.unsplash.com/white-french-bulldog-puppy-covered-with-white-textile-IeT84oak7HQ"
                   }
