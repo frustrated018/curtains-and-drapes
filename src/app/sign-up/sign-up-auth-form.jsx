@@ -19,22 +19,25 @@ import {
 import { auth } from "@/firebase/config";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 //TODO: Adding a mongodb databse and storing user data when they signup.
 
 const SignUpAuthForm = () => {
   //! Added functionality using firebase
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
   const [updateProfile] = useUpdateProfile(auth);
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const router = useRouter();
 
   //! User Signin with email and password
   const handleEmailSignUp = async (values) => {
+    setFormSubmitted(true);
     const data = new FormData();
     data.append("image", values.photo);
 
@@ -251,8 +254,15 @@ const SignUpAuthForm = () => {
               />
             </div>
 
-            {/* submit button */}
-            <Button type="submit">Sign up with Email</Button>
+            {/* Conditional submit button */}
+            {formSubmitted || loading ? (
+              <Button disabled>
+                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </Button>
+            ) : (
+              <Button type="submit">Sign up with Email</Button>
+            )}
           </div>
         </form>
         <div className="relative">
