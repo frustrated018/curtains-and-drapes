@@ -22,13 +22,13 @@ export const POST = async (request) => {
   try {
     const body = await request.json();
     // console.log(request);
-    console.log(body);
+    // console.log(body);
 
     await connect();
     const newUser = new User(body);
     await newUser.save();
 
-    console.log(newUser);
+    // console.log(newUser);
     
     return new NextResponse(
       JSON.stringify({ message: "User created successfully", user: newUser }),

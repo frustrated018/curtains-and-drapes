@@ -21,10 +21,8 @@ import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
-//TODO: Adding a mongodb databse and storing user data when they signup.
-
 const SignUpAuthForm = () => {
-  //! Added functionality using firebase
+  //! Added functionality using firebase & Posting user data to MongoDB Database
   const [user, loading] = useAuthState(auth);
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
@@ -32,6 +30,7 @@ const SignUpAuthForm = () => {
   const [signInWithGithub] = useSignInWithGithub(auth);
   const [updateProfile] = useUpdateProfile(auth);
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [postSuccess, setPostSuccess] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const router = useRouter();
 
@@ -59,7 +58,7 @@ const SignUpAuthForm = () => {
         username: values.name,
         photoURL: imageData?.data?.url,
       };
-      console.log(user);
+      // console.log(user);
       const dbPost = await fetch(`/api/users`, {
         method: "POST",
         body: JSON.stringify(user),
@@ -67,22 +66,24 @@ const SignUpAuthForm = () => {
 
       const dbData = await dbPost.json();
 
-      console.log(dbData);
+      if (dbData.user) {
+        setPostSuccess(true);
+      }
+      // console.log(dbData);
 
       //! Creating User
-      // const res = await createUserWithEmailAndPassword(
-      //   values.email,
-      //   values.password
-      // );
+      const res = await createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      );
 
       //! Updating user Profile image and display name
-      // const displayName = values.name;
-      // const success = await updateProfile({
-      //   displayName,
-      //   photoURL: imageData?.data?.url,
-      // });
-
-      // setUpdateSuccess(success);
+      const displayName = values.name;
+      const success = await updateProfile({
+        displayName,
+        photoURL: imageData?.data?.url,
+      });
+      setUpdateSuccess(success);
     } catch (e) {
       toast.error(`Catch Block Error: ${e}`, {
         theme: "colored",
@@ -95,6 +96,7 @@ const SignUpAuthForm = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
+      // TODO: need to post users in db
     } catch (e) {
       console.log(e);
     }
@@ -104,6 +106,7 @@ const SignUpAuthForm = () => {
   const handleGithubLogin = async () => {
     try {
       await signInWithGithub();
+      // TODO: need to post users in db
     } catch (e) {
       console.log(e);
     }
@@ -111,7 +114,11 @@ const SignUpAuthForm = () => {
 
   //! Conditions for successful and failed signup attempts
   useEffect(() => {
-    if (user && updateSuccess) {
+    if (user && postSuccess && updateSuccess) {
+      //! routing to home
+      router.push("/");
+
+      //* Showing success toast
       toast.success(
         `Hi ${
           user.displayName ? user.displayName : "User"
@@ -128,11 +135,8 @@ const SignUpAuthForm = () => {
           transition: Bounce,
         }
       );
-
-      //! routing to home
-      router.push("/");
     }
-  }, [user, router, updateSuccess]);
+  }, [user, router, updateSuccess, postSuccess]);
 
   //* Form validation and submission with Formik
   // Initial Values
