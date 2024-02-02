@@ -118,7 +118,7 @@ const SignUpAuthForm = () => {
       //! routing to home
       router.push("/");
 
-      //* Showing success toast
+      //* Showing success toast [Redeploying to vercel]
       toast.success(
         `Hi ${
           user.displayName ? user.displayName : "User"
