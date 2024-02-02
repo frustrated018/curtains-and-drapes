@@ -2,6 +2,9 @@ import connect from "@/lib/db";
 import User from "@/lib/models/users";
 import { NextRequest, NextResponse } from "next/server";
 
+
+// Getting all users
+
 export const GET = async () => {
   try {
     await connect();
@@ -12,16 +15,21 @@ export const GET = async () => {
   }
 };
 
+
+//Adding a new user on signup
+
 export const POST = async (request) => {
   try {
     const body = await request.json();
-    console.log(request);
+    // console.log(request);
     console.log(body);
 
     await connect();
     const newUser = new User(body);
     await newUser.save();
 
+    console.log(newUser);
+    
     return new NextResponse(
       JSON.stringify({ message: "User created successfully", user: newUser }),
       { status: 201 }

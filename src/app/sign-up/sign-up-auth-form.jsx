@@ -60,6 +60,14 @@ const SignUpAuthForm = () => {
         photoURL: imageData?.data?.url,
       };
       console.log(user);
+      const dbPost = await fetch(`/api/users`, {
+        method: "POST",
+        body: JSON.stringify(user),
+      });
+
+      const dbData = await dbPost.json();
+
+      console.log(dbData);
 
       //! Creating User
       // const res = await createUserWithEmailAndPassword(
