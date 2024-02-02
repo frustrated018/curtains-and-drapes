@@ -52,20 +52,29 @@ const SignUpAuthForm = () => {
       );
       const imageData = await response.json();
 
+      //! Sending user data to the database
+
+      const user = {
+        email: values.email,
+        username: values.name,
+        photoURL: imageData?.data?.url,
+      };
+      console.log(user);
+
       //! Creating User
-      const res = await createUserWithEmailAndPassword(
-        values.email,
-        values.password
-      );
+      // const res = await createUserWithEmailAndPassword(
+      //   values.email,
+      //   values.password
+      // );
 
       //! Updating user Profile image and display name
-      const displayName = values.name;
-      const success = await updateProfile({
-        displayName,
-        photoURL: imageData?.data?.url,
-      });
+      // const displayName = values.name;
+      // const success = await updateProfile({
+      //   displayName,
+      //   photoURL: imageData?.data?.url,
+      // });
 
-      setUpdateSuccess(success);
+      // setUpdateSuccess(success);
     } catch (e) {
       toast.error(`Catch Block Error: ${e}`, {
         theme: "colored",
