@@ -53,15 +53,15 @@ const SignUpAuthForm = () => {
 
       //! Sending user data to the database
 
-      const user = {
+      const newUser = {
         email: values.email,
         username: values.name,
         photoURL: imageData?.data?.url,
       };
-      // console.log(user);
+      // console.log(newUser);
       const dbPost = await fetch(`/api/users`, {
         method: "POST",
-        body: JSON.stringify(user),
+        body: JSON.stringify(newUser),
       });
 
       const dbData = await dbPost.json();
@@ -81,7 +81,7 @@ const SignUpAuthForm = () => {
       const displayName = values.name;
       const success = await updateProfile({
         displayName,
-        photoURL: imageData?.data?.url,
+        photoURL: imageData?.data?.url || "", //? for more safety?
       });
       setUpdateSuccess(success);
     } catch (e) {
@@ -96,13 +96,49 @@ const SignUpAuthForm = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      // TODO: need to post users in db
+
+      // Use an onAuthStateChanged listener to wait for the user to be updated
+      const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+        if (updatedUser) {
+          const newUser = {
+            email: updatedUser.email,
+            username: updatedUser.displayName,
+            photoURL: updatedUser.photoURL,
+          };
+
+          console.log("Updated user: ", updatedUser);
+          console.log("new user: ", newUser);
+
+          // Make your API request or perform other actions with newUser
+          const postUserToDatabase = async () => {
+            try {
+              const dbPost = await fetch(`/api/users`, {
+                method: "POST",
+                body: JSON.stringify(newUser),
+              });
+
+              const dbData = await dbPost.json();
+
+              if (dbData.user) {
+                setPostSuccess(true);
+              }
+            } catch (error) {
+              console.error("Error posting user to the database:", error);
+            }
+          };
+
+          postUserToDatabase();
+
+          // Don't forget to unsubscribe to the listener to avoid memory leaks
+          unsubscribe();
+        }
+      });
     } catch (e) {
       console.log(e);
     }
   };
 
-  //! Handleing google login
+  //! Handleing Github login
   const handleGithubLogin = async () => {
     try {
       await signInWithGithub();
@@ -114,11 +150,37 @@ const SignUpAuthForm = () => {
 
   //! Conditions for successful and failed signup attempts
   useEffect(() => {
-    if (user && postSuccess && updateSuccess) {
-      //! routing to home
-      router.push("/");
+    if (user) {
+      // * For form submission
+      if (formSubmitted && postSuccess && updateSuccess) {
+        //! routing to home
+        // router.push("/");
 
-      //* Showing success toast 
+        //* Showing success toast
+        toast.success(
+          `Hi ${
+            user.displayName ? user.displayName : "User"
+          }! Welcome to our site`,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          }
+        );
+      }
+
+      // * Social login
+      if (!formSubmitted && postSuccess) {
+         //! routing to home
+      // router.push("/");
+
+      //* Showing success toast
       toast.success(
         `Hi ${
           user.displayName ? user.displayName : "User"
@@ -135,6 +197,9 @@ const SignUpAuthForm = () => {
           transition: Bounce,
         }
       );
+      }
+
+     
     }
   }, [user, router, updateSuccess, postSuccess]);
 
