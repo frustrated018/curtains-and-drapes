@@ -97,7 +97,7 @@ const SignUpAuthForm = () => {
     try {
       await signInWithGoogle();
 
-      // Use an onAuthStateChanged listener to wait for the user to be updated
+      // Using an onAuthStateChanged listener to wait for the user to be updated
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
         if (updatedUser) {
           const newUser = {
@@ -109,7 +109,7 @@ const SignUpAuthForm = () => {
           console.log("Updated user: ", updatedUser);
           console.log("new user: ", newUser);
 
-          // Make your API request or perform other actions with newUser
+          // making api call to post user to database
           const postUserToDatabase = async () => {
             try {
               const dbPost = await fetch(`/api/users`, {
@@ -127,9 +127,8 @@ const SignUpAuthForm = () => {
             }
           };
 
+          //* Posting user and callling unsubscribe to avoid memory leaks
           postUserToDatabase();
-
-          // Don't forget to unsubscribe to the listener to avoid memory leaks
           unsubscribe();
         }
       });
@@ -177,31 +176,29 @@ const SignUpAuthForm = () => {
 
       // * Social login
       if (!formSubmitted && postSuccess) {
-         //! routing to home
-      // router.push("/");
+        //! routing to home
+        // router.push("/");
 
-      //* Showing success toast
-      toast.success(
-        `Hi ${
-          user.displayName ? user.displayName : "User"
-        }! Welcome to our site`,
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        }
-      );
+        //* Showing success toast
+        toast.success(
+          `Hi ${
+            user.displayName ? user.displayName : "User"
+          }! Welcome to our site`,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          }
+        );
       }
-
-     
     }
-  }, [user, router, updateSuccess, postSuccess]);
+  }, [user, router, updateSuccess, postSuccess, formSubmitted]);
 
   //* Form validation and submission with Formik
   // Initial Values
