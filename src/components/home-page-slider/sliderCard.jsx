@@ -6,7 +6,7 @@ const SliderCard = ({ content }) => {
 
   return (
     <Card>
-      <CardContent className="flex flex-col justify-center items-center aspect-video gap-2 rounded-lg pt-6">
+      <CardContent className="flex flex-col justify-center items-center aspect-video gap-2 rounded-lg pt-6 bg-secondary">
         <div className="relative">
           <Image
             src={url}
@@ -16,8 +16,10 @@ const SliderCard = ({ content }) => {
             className="w-auto h-auto"
           />
         </div>
-        <h2 className="text-3xl font-semibold hover:text-sky-300">{name}</h2>
-        <h4 className="text-xl">$ {price}</h4>
+        <h2 className="text-nowrap text-xl sm:text-3xl font-semibold hover:text-sky-300">
+          {name}
+        </h2>
+        <h4 className="text-sm sm:text-xl">${price}</h4>
       </CardContent>
     </Card>
   );
