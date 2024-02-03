@@ -21,6 +21,8 @@ import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
+//TODO: Refactor this code to make it more DRY. seperate the social logins as a function
+
 const SignUpAuthForm = () => {
   //! Added functionality using firebase & Posting user data to MongoDB Database
   const [user, loading] = useAuthState(auth);
