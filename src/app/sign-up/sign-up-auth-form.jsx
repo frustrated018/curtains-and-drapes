@@ -81,7 +81,7 @@ const SignUpAuthForm = () => {
       const displayName = values.name;
       const success = await updateProfile({
         displayName,
-        photoURL: imageData?.data?.url || "", //? for more safety?
+        photoURL: imageData?.data?.url || "",
       });
       setUpdateSuccess(success);
     } catch (e) {
@@ -106,8 +106,8 @@ const SignUpAuthForm = () => {
             photoURL: updatedUser.photoURL,
           };
 
-          console.log("Updated user: ", updatedUser);
-          console.log("new user: ", newUser);
+          // console.log("Updated user: ", updatedUser);
+          // console.log("new user: ", newUser);
 
           // making api call to post user to database
           const postUserToDatabase = async () => {
@@ -141,7 +141,42 @@ const SignUpAuthForm = () => {
   const handleGithubLogin = async () => {
     try {
       await signInWithGithub();
-      // TODO: need to post users in db
+
+      // Using an onAuthStateChanged listener to wait for the user to be updated
+      const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+        if (updatedUser) {
+          const newUser = {
+            email: updatedUser.email,
+            username: updatedUser.displayName,
+            photoURL: updatedUser.photoURL,
+          };
+
+          // console.log("Updated user: ", updatedUser);
+          // console.log("new user: ", newUser);
+
+          // making api call to post user to database
+          const postUserToDatabase = async () => {
+            try {
+              const dbPost = await fetch(`/api/users`, {
+                method: "POST",
+                body: JSON.stringify(newUser),
+              });
+
+              const dbData = await dbPost.json();
+
+              if (dbData.user) {
+                setPostSuccess(true);
+              }
+            } catch (error) {
+              console.error("Error posting user to the database:", error);
+            }
+          };
+
+          //* Posting user and callling unsubscribe to avoid memory leaks
+          postUserToDatabase();
+          unsubscribe();
+        }
+      });
     } catch (e) {
       console.log(e);
     }
@@ -153,7 +188,7 @@ const SignUpAuthForm = () => {
       // * For form submission
       if (formSubmitted && postSuccess && updateSuccess) {
         //! routing to home
-        // router.push("/");
+        router.push("/");
 
         //* Showing success toast
         toast.success(
@@ -177,7 +212,9 @@ const SignUpAuthForm = () => {
       // * Social login
       if (!formSubmitted && postSuccess) {
         //! routing to home
-        // router.push("/");
+        router.push("/");
+
+        console.log("from social login condition");
 
         //* Showing success toast
         toast.success(

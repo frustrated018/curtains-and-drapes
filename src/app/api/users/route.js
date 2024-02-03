@@ -25,6 +25,9 @@ export const POST = async (request) => {
     // console.log(body);
 
     await connect();
+
+    // TODO: Check if user already exists in DB
+
     const newUser = new User(body);
     await newUser.save();
 
