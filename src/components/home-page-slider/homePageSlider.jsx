@@ -5,7 +5,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 import SliderCard from "./sliderCard";
 
 const sliderContents = [
@@ -34,18 +33,25 @@ const sliderContents = [
 const HomePageSlider = () => {
   return (
     <>
-      <Carousel className="w-full max-w-screen-md xl:max-w-screen-lg mx-auto">
+      <Carousel
+        className="w-full max-w-screen-md xl:max-w-screen-lg mx-auto"
+        opts={{
+          loop: true,
+        }}
+      >
         <CarouselContent>
           {sliderContents.map((content, index) => (
-            <CarouselItem key={index}>
+            <CarouselItem key={index} className="">
               <div className="p-5">
                 <SliderCard content={content} />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious variant="ghost" />
-        <CarouselNext variant="ghost" />
+        <div className="hidden lg:block">
+          <CarouselPrevious variant="ghost" />
+          <CarouselNext variant="ghost" />
+        </div>
       </Carousel>
     </>
   );
