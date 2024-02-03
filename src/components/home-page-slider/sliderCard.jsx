@@ -17,7 +17,7 @@ const SliderCard = ({ content }) => {
             className="object-contain"
           />
         </div>
-        <h2 className="text-nowrap text-xl sm:text-3xl font-semibold hover:text-sky-300">
+        <h2 className="text-xl sm:text-3xl font-semibold hover:text-sky-300">
           {name}
         </h2>
         <h4 className="text-sm sm:text-xl">${price}</h4>

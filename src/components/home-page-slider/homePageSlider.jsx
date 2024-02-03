@@ -20,7 +20,7 @@ const sliderContents = [
   },
   {
     url: "https://i.ibb.co/26YQMMS/anais-murith-u2k-V8mqvdtc-unsplash.jpg",
-    name: "Silk Serenity Window Covering",
+    name: "Silk Serenity",
     price: 19.95,
   },
   {
