@@ -41,7 +41,7 @@ const HomePageSlider = () => {
       >
         <CarouselContent>
           {sliderContents.map((content, index) => (
-            <CarouselItem key={index} className="">
+            <CarouselItem key={index}>
               <div className="p-5">
                 <SliderCard content={content} />
               </div>
