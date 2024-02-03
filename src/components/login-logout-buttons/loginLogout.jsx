@@ -36,9 +36,9 @@ const LoginLogout = () => {
           <DropdownMenuItem>Login</DropdownMenuItem>
         </Link>
       ) : (
-        <DropdownMenuItem>
-          <button onClick={handleSignout}>Log Out</button>
-        </DropdownMenuItem>
+        <button onClick={handleSignout} className="w-full">
+          <DropdownMenuItem>Log Out</DropdownMenuItem>
+        </button>
       )}
     </>
   );

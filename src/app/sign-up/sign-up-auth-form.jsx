@@ -214,8 +214,6 @@ const SignUpAuthForm = () => {
         //! routing to home
         router.push("/");
 
-        console.log("from social login condition");
-
         //* Showing success toast
         toast.success(
           `Hi ${
