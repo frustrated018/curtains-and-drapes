@@ -14,7 +14,7 @@ const links = [
   { name: "Bed Sheets", href: "/#" },
 ];
 
-const LeftSearchLinks = () => {
+const LeftSearchLinks = ({ setSelectedLink }) => {
   const pathname = usePathname();
   return (
     <div className="flex flex-col p-4 md:p-0">
@@ -22,6 +22,7 @@ const LeftSearchLinks = () => {
         <Link
           key={link.name}
           href={link.href}
+          onClick={() => setSelectedLink(link.name)}
           className={clsx("hover:underline", {
             "text-blue-600 underline": pathname === link.href,
           })}
