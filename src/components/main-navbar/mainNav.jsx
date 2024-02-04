@@ -19,10 +19,10 @@ import {
 import { ThemeToggleButton } from "@/components/theme-toggle-button/themeToggleButton";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
-import Search from "../search/search";
 import LoginLogout from "@/components/login-logout-buttons/loginLogout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
+import SearchBar from "@/components/search-bar/searchBar";
 
 //TODO: Seperate which parts of this navbar are static and which are not.
 
@@ -107,7 +107,7 @@ const MainNav = () => {
 
         <section className="flex items-center gap-3">
           {/* //! Search Bar */}
-          <Search />
+          <SearchBar />
 
           {/* //! Light and dark mode toggle button */}
           <ThemeToggleButton />

@@ -55,6 +55,8 @@ const sliderContents = [
   },
 ];
 
+//TODO: Fetch data from server and show products that way
+
 const HomePageSlider = () => {
   return (
     <>
