@@ -30,20 +30,20 @@ const MainNav = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <nav className="p-[.5rem] border border-b-foreground ">
-      <section className="flex justify-around md:justify-between items-center">
+    <nav className="border border-b-foreground p-[.5rem] ">
+      <section className="flex items-center justify-around md:justify-between">
         {/* //! Left Side */}
         <section id="left" className="flex items-center gap-5">
           {/* //! Logo */}
           <Link
             href="/"
-            className=" order-2 lg:order-1 text-xl font-bold hidden md:block"
+            className=" order-2 hidden text-xl font-bold md:block lg:order-1"
           >
             Curtains & Drapes
           </Link>
 
           {/* //! Normal Nav Links */}
-          <div className="hidden lg:block order-2">
+          <div className="order-2 hidden lg:block">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -79,7 +79,7 @@ const MainNav = () => {
 
           {/* //! For Mobile devices  */}
           {/* //TODO: Change the links and add other things */}
-          <div className=" order-1 lg:hidden flex justify-center">
+          <div className=" order-1 flex justify-center lg:hidden">
             <Sheet>
               <SheetTrigger>
                 <IoIosMenu size={30} />
@@ -118,7 +118,7 @@ const MainNav = () => {
               <CiShoppingCart size={24} />
             </SheetTrigger>
             <SheetContent side={"right"}>
-              <div className="flex flex-col justify-center items-center pt-[50%]">
+              <div className="flex flex-col items-center justify-center pt-[50%]">
                 <CiShoppingCart size={60} />
                 <h2 className="text-4xl font-bold">Oops!</h2>
                 <p className="text-lg font-semibold">No items in your cart.</p>

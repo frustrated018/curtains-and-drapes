@@ -61,7 +61,7 @@ const HomePageSlider = () => {
   return (
     <>
       <Carousel
-        className="w-full max-w-screen-md xl:max-w-screen-lg mx-auto"
+        className="mx-auto w-full max-w-screen-md xl:max-w-screen-lg"
         opts={{
           loop: true,
         }}
