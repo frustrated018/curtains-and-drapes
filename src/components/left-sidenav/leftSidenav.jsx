@@ -3,17 +3,17 @@ import LeftSearchLinks from "./leftSearchLinks";
 
 const LeftSideNav = () => {
   return (
-    <section className="flex h-full flex-col bg-secondary">
-      <div className="ml-4 mt-2">
+    <div className="flex h-full flex-col bg-secondary">
+      <section className="ml-4 mt-2 hidden md:block">
         {/* Title */}
         <h3 className="mb-2 text-sm text-muted-foreground">Collections</h3>
 
-        {/* Links //TODO: Need to find a way to make them active links */}
+        {/* Normal Links */}
         <div className="flex flex-col">
           <LeftSearchLinks />
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

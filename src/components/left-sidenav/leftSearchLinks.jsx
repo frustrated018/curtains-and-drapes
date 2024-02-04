@@ -7,7 +7,11 @@ import { usePathname } from "next/navigation";
 const links = [
   { name: "All Products", href: "/search" },
   { name: "Curtains", href: "/search/curtains" },
-  { name: "drapes", href: "/search/drapes" },
+  { name: "Drapes", href: "/search/drapes" },
+  { name: "Accessories", href: "/#" },
+  { name: "Mattress", href: "/#" },
+  { name: "Pillow Case", href: "/#" },
+  { name: "Bed Sheets", href: "/#" },
 ];
 
 const LeftSearchLinks = () => {
