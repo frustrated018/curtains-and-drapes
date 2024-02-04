@@ -47,7 +47,7 @@ const MainNav = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Link href="/#" legacyBehavior passHref>
+                  <Link href="/search" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -90,8 +90,8 @@ const MainNav = () => {
                   <Link href="/" className="font-bold">
                     Curtains & Drapes
                   </Link>
-                  <Link href="#" className="text-primary">
-                    About
+                  <Link href="/search" className="text-primary">
+                    All Products
                   </Link>
                   <Link href="#" className="text-primary">
                     Contact
