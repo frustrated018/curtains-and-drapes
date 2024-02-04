@@ -1,11 +1,20 @@
+import LeftSideNav from "@/components/left-sidenav/leftSidenav";
 import MainNav from "@/components/main-navbar/mainNav";
 
 export default function SearchLayout({ children }) {
+  //TODO: Need to add two sidenavs in this layout
+
   return (
     <>
       <MainNav />
-      <>{children}</>
-      {/* //TODO: Need to add two sidenavs in this layout */}
+      <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+        <div className="w-full flex-none lg:w-48">
+          <LeftSideNav />
+        </div>
+        <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+          {children}
+        </div>
+      </div>
     </>
   );
 }
