@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import LeftSearchLinks from "./leftSearchLinks";
 
 const LeftSideNav = () => {
   return (
@@ -11,8 +10,7 @@ const LeftSideNav = () => {
 
         {/* Links //TODO: Need to find a way to make them active links */}
         <div className="flex flex-col">
-          <Link href="/search">All Products</Link>
-          <Link href="/search">All Products</Link>
+          <LeftSearchLinks />
         </div>
       </div>
     </section>
