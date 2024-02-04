@@ -1,5 +1,5 @@
 import LeftSearchLinks from "./leftSearchLinks";
-import LeftSmallerNav from "./leftsmallerNav";
+import LeftDropdown from "./leftDropdown";
 
 const LeftSideNav = () => {
   return (
@@ -18,7 +18,7 @@ const LeftSideNav = () => {
       </section>
 
       {/* Links for smaller devices */}
-      <LeftSmallerNav />
+      <LeftDropdown />
     </>
   );
 };

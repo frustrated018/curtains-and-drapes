@@ -10,7 +10,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import LeftSearchLinks from "./leftSearchLinks";
 import { useState } from "react";
 
-const LeftSmallerNav = () => {
+const LeftDropdown = () => {
   const [selectedLink, setSelectedLink] = useState("All Products");
 
   return (
@@ -31,4 +31,4 @@ const LeftSmallerNav = () => {
   );
 };
 
-export default LeftSmallerNav;
+export default LeftDropdown;
