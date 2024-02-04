@@ -17,7 +17,7 @@ const links = [
 const LeftSearchLinks = () => {
   const pathname = usePathname();
   return (
-    <>
+    <div className="flex flex-col p-4 md:p-0">
       {links.map((link) => (
         <Link
           key={link.name}
@@ -29,7 +29,7 @@ const LeftSearchLinks = () => {
           {link.name}
         </Link>
       ))}
-    </>
+    </div>
   );
 };
 

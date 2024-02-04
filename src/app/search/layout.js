@@ -8,7 +8,7 @@ export default function SearchLayout({ children }) {
     <>
       <MainNav />
       <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-        <div className="w-full flex-none md:w-32 lg:w-40">
+        <div className="w-full flex-none md:w-36 lg:w-48">
           <LeftSideNav />
         </div>
         <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
