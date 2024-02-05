@@ -1,5 +1,6 @@
 import LeftSideNav from "@/components/left-sidenav/leftSidenav";
 import MainNav from "@/components/main-navbar/mainNav";
+import RightSidenav from "@/components/right-sidenav/rightSidenav";
 
 export default function SearchLayout({ children }) {
   //TODO: Need to add two sidenavs in this layout
@@ -13,6 +14,9 @@ export default function SearchLayout({ children }) {
         </div>
         <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
           {children}
+        </div>
+        <div className="w-full flex-none md:w-36 lg:w-48">
+          <RightSidenav />
         </div>
       </div>
     </>
