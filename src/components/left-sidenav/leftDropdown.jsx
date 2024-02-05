@@ -8,10 +8,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import LeftSearchLinks from "./leftSearchLinks";
-import { useState } from "react";
 
 const LeftDropdown = () => {
-  const [selectedLink, setSelectedLink] = useState("All Products");
 
   return (
     <section className="mt-4 flex justify-center md:hidden">
@@ -19,12 +17,12 @@ const LeftDropdown = () => {
         {/* Trigger */}
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-[90%] justify-between">
-            {selectedLink} <ChevronDownIcon />
+            Collection <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
         {/* Content */}
         <DropdownMenuContent className="min-[320px]:w-72 min-[375px]:w-80 min-[425px]:w-96">
-          <LeftSearchLinks setSelectedLink={setSelectedLink} />
+          <LeftSearchLinks  />
         </DropdownMenuContent>
       </DropdownMenu>
     </section>

@@ -3,7 +3,9 @@ import MainNav from "@/components/main-navbar/mainNav";
 import RightSidenav from "@/components/right-sidenav/rightSidenav";
 
 export default function SearchLayout({ children }) {
-  //TODO: Need to add two sidenavs in this layout
+  //! TODO: Issue with the links.... Every time i click the liks it refreshes the whole page and makes a mess. also if i change the pages but don't update the sort function it stays the same for the dorpdown menu but the search params don't actually stay updated
+  
+  //! Vercel Deploy issue: Error occurred prerendering page "/search/curtains". and other dynamic routes as well. I think it's form the prop drilling but let's see 
 
   return (
     <>

@@ -12,7 +12,7 @@ const queries = [
   { name: "Price: High to low", param: "price-desc" },
 ];
 
-const RightSearchLinks = ({ setSelectedQuery }) => {
+const RightSearchLinks = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -34,7 +34,6 @@ const RightSearchLinks = ({ setSelectedQuery }) => {
         <Link
           key={query.name}
           href={pathname + "?" + createQueryString("sort", query.param)}
-          onClick={() => setSelectedQuery(query.name)}
           className={clsx("hover:underline", {
             "text-blue-600 underline": searchParams
               .toString()
