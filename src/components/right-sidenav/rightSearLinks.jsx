@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { Suspense, useCallback } from "react";
 
 const queries = [
   { name: "Trending", param: "trending-desc" },
@@ -12,7 +12,7 @@ const queries = [
   { name: "Price: High to low", param: "price-desc" },
 ];
 
-const RightSearchLinks = () => {
+const RightSearchLinks = ({ setSelectedQuery }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -29,21 +29,24 @@ const RightSearchLinks = () => {
   );
 
   return (
-    <div className="flex flex-col p-4 md:p-0">
-      {queries.map((query) => (
-        <Link
-          key={query.name}
-          href={pathname + "?" + createQueryString("sort", query.param)}
-          className={clsx("hover:underline", {
-            "text-blue-600 underline": searchParams
-              .toString()
-              .includes(query.param),
-          })}
-        >
-          {query.name}
-        </Link>
-      ))}
-    </div>
+    <Suspense fallback="Loading>>>>">
+      <div className="flex flex-col p-4 md:p-0">
+        {queries.map((query) => (
+          <Link
+            key={query.name}
+            href={pathname + "?" + createQueryString("sort", query.param)}
+            onClick={() => setSelectedQuery(query.name)}
+            className={clsx("hover:underline", {
+              "text-blue-600 underline": searchParams
+                .toString()
+                .includes(query.param),
+            })}
+          >
+            {query.name}
+          </Link>
+        ))}
+      </div>
+    </Suspense>
   );
 };
 
