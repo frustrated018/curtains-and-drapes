@@ -1,6 +1,7 @@
 import LeftSideNav from "@/components/left-sidenav/leftSidenav";
 import MainNav from "@/components/main-navbar/mainNav";
 import RightSidenav from "@/components/right-sidenav/rightSidenav";
+import { Suspense } from "react";
 
 export default function SearchLayout({ children }) {
   //! TODO: Issue with the links.... Every time i click the liks it refreshes the whole page and makes a mess. also if i change the pages but don't update the sort function it stays the same for the dorpdown menu but the search params don't actually stay updated
@@ -14,6 +15,11 @@ export default function SearchLayout({ children }) {
         </div>
         <div className="order-3 flex-grow p-6 md:order-2 md:overflow-y-auto md:p-12">
           {children}
+        </div>
+        <div className="order-2 w-full flex-none md:order-3 md:w-36 lg:w-48">
+          <Suspense fallback={<div>Layout loading....</div>}>
+            <RightSidenav />
+          </Suspense>
         </div>
       </div>
     </>
