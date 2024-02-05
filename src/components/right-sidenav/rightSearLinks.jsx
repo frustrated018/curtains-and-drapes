@@ -35,6 +35,11 @@ const RightSearchLinks = ({ setSelectedQuery }) => {
           key={query.name}
           href={pathname + "?" + createQueryString("sort", query.param)}
           onClick={() => setSelectedQuery(query.name)}
+          className={clsx("hover:underline", {
+            "text-blue-600 underline": searchParams
+              .toString()
+              .includes(query.param),
+          })}
         >
           {query.name}
         </Link>

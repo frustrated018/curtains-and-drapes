@@ -9,13 +9,13 @@ export default function SearchLayout({ children }) {
     <>
       <MainNav />
       <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-        <div className="w-full flex-none md:w-36 lg:w-48">
+        <div className="order-1 w-full flex-none md:w-36 lg:w-48">
           <LeftSideNav />
         </div>
-        <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+        <div className="order-3 flex-grow p-6 md:order-2 md:overflow-y-auto md:p-12">
           {children}
         </div>
-        <div className="w-full flex-none md:w-36 lg:w-48">
+        <div className="order-2 w-full flex-none md:order-3 md:w-36 lg:w-48">
           <RightSidenav />
         </div>
       </div>
