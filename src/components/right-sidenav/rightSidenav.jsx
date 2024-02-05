@@ -1,4 +1,3 @@
-import React from "react";
 import RightSearchLinks from "./rightSearLinks";
 import RightDropdown from "./rightDropdown";
 

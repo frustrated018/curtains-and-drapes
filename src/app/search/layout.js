@@ -15,9 +15,6 @@ export default function SearchLayout({ children }) {
         <div className="order-3 flex-grow p-6 md:order-2 md:overflow-y-auto md:p-12">
           {children}
         </div>
-        <div className="order-2 w-full flex-none md:order-3 md:w-36 lg:w-48">
-          <RightSidenav />
-        </div>
       </div>
     </>
   );
