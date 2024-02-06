@@ -1,9 +1,12 @@
+import ProductCard from "@/components/product-card/productCard";
+
 const SearchPage = () => {
   return (
     <>
-      <div className="mt-40 text-center text-2xl font-semibold">
-        <h3>This will be the middle section where all the products will be</h3>
-        <p>will fetch data from the DB and show product cards here</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
     </>
   );
