@@ -8,6 +8,8 @@ export default function SearchLayout({ children }) {
 
   //! AHHHHH this thing is so much worse than i thought the issue is the whole page loading when one link is clicked. I just want to update the url like in the vercel e-commerce store. but WTH is wrong with my approach !!!! (¬_¬ )
 
+  //! Another one ༼ つ ◕_◕ ༽つ : There is a scrollbar in the children. If there are too many cardsit shows up.
+
   return (
     <>
       <MainNav />
