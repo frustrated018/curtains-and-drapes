@@ -17,7 +17,7 @@ export default function SearchLayout({ children }) {
         <div className="order-1 w-full flex-none md:w-36 lg:w-48">
           <LeftSideNav />
         </div>
-        <div className="order-3 flex-grow p-4 md:order-2 md:overflow-y-auto md:p-5">
+        <div className="no-scrollbar order-3 flex-grow p-4 md:order-2 md:overflow-y-auto md:p-5">
           {children}
         </div>
         <div className="order-2 w-full flex-none md:order-3 md:w-36 lg:w-48">
