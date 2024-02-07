@@ -4,12 +4,12 @@ import { FaXTwitter } from "react-icons/fa6";
 const HomePageFooter = () => {
   return (
     <section className="bg-secondary">
-      <footer className="flex items-center justify-between p-5">
-        <section className="flex items-center gap-5">
-          <div className="border-r border-muted-foreground">
-            <h2 className="pr-2 text-xl">Curtains & drapes</h2>
+      <footer className="flex flex-col items-center justify-between gap-5 p-5 lg:flex-row">
+        <section className="flex flex-col  items-center gap-2 lg:flex-row lg:gap-5">
+          <div className="border-none border-muted-foreground lg:border-r">
+            <h2 className="pr-0 text-xl lg:pr-2">Curtains & drapes</h2>
           </div>
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap gap-2 lg:gap-5">
             <a href="/" className="hover:underline">
               Home
             </a>
@@ -50,13 +50,13 @@ const HomePageFooter = () => {
         </div>
       </footer>
 
-      <section className="flex items-center justify-between border-t border-muted-foreground px-10 py-5">
+      <section className="flex flex-col lg:flex-row gap-5 lg:gap-0 items-center justify-between border-t border-muted-foreground px-10 py-5">
         <p className="text-center text-sm text-muted-foreground">
           © 2023-2024 Curtains & Drapes Inc. All rights reserved | Designed in
           Bangladesh
         </p>
         <div className="text-sm text-muted-foreground">
-          Crafted by {" "}
+          Crafted by{" "}
           <a
             href="https://github.com/frustrated018"
             target="_blank"
