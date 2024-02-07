@@ -29,7 +29,6 @@ const RightSearchLinks = ({ setSelectedQuery }) => {
   );
 
   return (
-    <Suspense fallback={<div>Loading....</div>}>
       <div className="flex flex-col p-4 md:p-0">
         {queries.map((query) => (
           <Link
@@ -46,7 +45,6 @@ const RightSearchLinks = ({ setSelectedQuery }) => {
           </Link>
         ))}
       </div>
-    </Suspense>
   );
 };
 
