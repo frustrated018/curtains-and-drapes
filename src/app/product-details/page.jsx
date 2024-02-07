@@ -14,19 +14,20 @@ const ProductDetailsPage = () => {
   return (
     <>
       <MainNav />
-      <Card className="mx-auto mt-10 flex min-h-[80vh] w-[90%] flex-col md:flex-row">
-        <div className="relative w-1/2 rounded-l-lg bg-secondary">
-          <Image
-            src={
-              "https://i.ibb.co/PYrt6Dk/kelly-sikkema-Wu-V93q-VO97c-unsplash.jpg"
-            }
-            alt="Product Image"
-            fill
-            className=" object-contain"
-            priority={true}
-          />
-        </div>
-        <section className="w-1/2">
+      <Card className="mx-auto my-10 flex min-h-[80vh] w-[90%] flex-col md:flex-row">
+        <section className="h-[500px] w-full bg-secondary md:h-auto md:w-1/2">
+          <div className="relative mx-auto h-full w-full">
+            <Image
+              src={
+                "https://i.ibb.co/PYrt6Dk/kelly-sikkema-Wu-V93q-VO97c-unsplash.jpg"
+              }
+              alt="Product Name"
+              fill
+              className="h-full w-full object-contain"
+            />
+          </div>
+        </section>
+        <section className="w-full md:w-1/2">
           <CardHeader>
             <h3 className="text-4xl">Name of the product</h3>
             <div className="max-w-max rounded-full bg-blue-600 text-white">
