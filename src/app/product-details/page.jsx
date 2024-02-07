@@ -1,3 +1,4 @@
+import HomePageFooter from "@/components/footer/home-footer";
 import MainNav from "@/components/main-navbar/mainNav";
 import { Button } from "@/components/ui/button";
 import {
@@ -62,6 +63,7 @@ const ProductDetailsPage = () => {
           </CardFooter>
         </section>
       </Card>
+      <HomePageFooter />
     </>
   );
 };

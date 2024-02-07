@@ -1,3 +1,4 @@
+import HomePageFooter from "@/components/footer/home-footer";
 import LeftSideNav from "@/components/left-sidenav/leftSidenav";
 import MainNav from "@/components/main-navbar/mainNav";
 import RightSidenav from "@/components/right-sidenav/rightSidenav";
@@ -27,6 +28,7 @@ export default function SearchLayout({ children }) {
           </Suspense>
         </div>
       </div>
+      <HomePageFooter />
     </>
   );
 }
