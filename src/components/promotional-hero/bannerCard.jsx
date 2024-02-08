@@ -1,20 +1,20 @@
 import Image from "next/image";
 
-const BannerCard = () => {
+const BannerCard = ({ card }) => {
+  const { title, subtitle, imgURL } = card;
   return (
     <section className="max-w-1/3 h-52 rounded-lg bg-muted">
-      <div className="flex items-center justify-around p-4">
-        <div className="font-semibold">
-          <h2 className="text-xl">Winter Seasosn</h2>
-          <h2>2023</h2>
+      <div className="flex items-center justify-around gap-2 p-3">
+        <div className="font-semibold text-nowrap">
+          <h2 className="text-xl">{title}</h2>
+          <h4>{subtitle}</h4>
         </div>
         <div className="flex w-1/2 justify-center">
           <Image
-            src={"https://i.ibb.co/PjTkxHV/gigi-Uk-R7-Dq2-Yq-PY-unsplash.jpg"}
+            src={imgURL}
             alt="Product Image"
-            width={130}
-            height={130}
-            className=" object-contain"
+            width={125}
+            height={125}
           />
         </div>
       </div>
