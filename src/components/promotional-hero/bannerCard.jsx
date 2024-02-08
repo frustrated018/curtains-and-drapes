@@ -3,7 +3,7 @@ import Image from "next/image";
 const BannerCard = ({ card }) => {
   const { title, subtitle, imgURL } = card;
   return (
-    <section className="max-w-1/3 h-52 rounded-lg bg-muted">
+    <section className="max-w-1/3 h-52 rounded-lg bg-muted hover:cursor-pointer">
       <div className="flex items-center justify-around gap-2 p-3">
         <div className="font-semibold text-nowrap">
           <h2 className="text-xl">{title}</h2>

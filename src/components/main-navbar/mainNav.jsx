@@ -153,7 +153,9 @@ const MainNav = () => {
 
             {/* //! Content */}
             <DropdownMenuContent>
-              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <Link href="/dashboard/admin-dashboard">
+                <DropdownMenuItem>Dashboard</DropdownMenuItem>
+              </Link>
               {/* login logout toggle */}
               <LoginLogout />
             </DropdownMenuContent>
