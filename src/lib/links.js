@@ -1,18 +1,18 @@
 export const dashboardAdminLinks = [
   {
     title: "Overview",
-    href: "/dashboard/admin-dashboard",
+    href: "/admin-dashboard",
   },
   {
     title: "Users",
-    href: "/dashboard/admin-dashboard/users",
+    href: "/admin-dashboard/users",
   },
   {
     title: "Products",
-    href: "/dashboard/admin-dashboard/products",
+    href: "/admin-dashboard/products",
   },
   {
     title: "Profile",
-    href: "/dashboard/admin-dashboard/profile",
+    href: "/admin-dashboard/profile",
   },
 ];

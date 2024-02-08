@@ -153,7 +153,7 @@ const MainNav = () => {
 
             {/* //! Content */}
             <DropdownMenuContent>
-              <Link href="/dashboard/admin-dashboard">
+              <Link href="/admin-dashboard">
                 <DropdownMenuItem>Dashboard</DropdownMenuItem>
               </Link>
               {/* login logout toggle */}
