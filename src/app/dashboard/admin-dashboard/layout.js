@@ -1,16 +1,12 @@
-import DashboardSidenav from '@/components/Dashboard-Sidenav/dashboardSidenav';
-import React from 'react';
+import Sidebar from "@/components/dashboard/sidebar";
 
-const AdimnDashboardLayout = ({children}) => {
-    return (
-        <section className='flex justify-between items-start'>
-            <DashboardSidenav />
-            <div className='w-full h-full'>
-
-            {children}
-            </div>
-        </section>
-    );
+const AdimnDashboardLayout = ({ children }) => {
+  return (
+    <section className="flex h-screen overflow-hidden">
+      <Sidebar />
+      <div className="h-full w-full">{children}</div>
+    </section>
+  );
 };
 
 export default AdimnDashboardLayout;
