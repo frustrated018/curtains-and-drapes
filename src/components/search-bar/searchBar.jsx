@@ -1,8 +1,8 @@
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
-const SearchBar= () => {
+const SearchBar = () => {
   return (
-    <form className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
+    <form className="relative w-full max-w-[500px] lg:w-80 xl:w-full">
       <input
         type="text"
         name="search"
