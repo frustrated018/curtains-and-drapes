@@ -21,7 +21,7 @@ const DashboardNav = () => {
               path === adminLink.href ? "bg-accent" : "transparent",
             )}
           >
-            <Icon size={25} />
+            <Icon size={20} />
             <span className="ml-2">{adminLink.title}</span>
           </Link>
         );
