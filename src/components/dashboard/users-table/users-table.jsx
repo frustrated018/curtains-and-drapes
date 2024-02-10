@@ -27,7 +27,7 @@ const UsersTable = ({ userData }) => {
   return (
     <section className="my-5">
       <div className="mx-auto h-full w-[90%] rounded-lg border">
-        <ScrollArea className="h-[50vh]">
+        <ScrollArea className="h-[65vh]">
           <Table>
             {/* //! Header */}
             <TableHeader>

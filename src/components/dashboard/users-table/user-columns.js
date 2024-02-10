@@ -13,10 +13,12 @@ export const userColumns = [
     header: "User Image",
     cell: ({ row }) => {
       return (
-        <Avatar>
-          <AvatarImage src={row.original?.photoURL} alt="@shadcn" />
-          <AvatarFallback>DP</AvatarFallback>
-        </Avatar>
+        <div className="pl-2">
+          <Avatar className="h-14 w-14">
+            <AvatarImage src={row.original?.photoURL} alt="User Image" />
+            <AvatarFallback>DP</AvatarFallback>
+          </Avatar>
+        </div>
       );
     },
   },
@@ -48,10 +50,10 @@ export const userColumns = [
     cell: ({ row }) => <div>{row.getValue("role")}</div>,
   },
   {
-    header: "Update/Delete",
-    cell: ({ props }) => {
+    header: "Actions",
+    cell: ({ row }) => {
       return (
-        <div className=" ml-8">
+        <div className="pl-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="h-8 w-8 p-0">
