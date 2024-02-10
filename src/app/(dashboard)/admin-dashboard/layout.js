@@ -2,7 +2,7 @@ import Sidebar from "@/components/dashboard/sidebar";
 
 const AdimnDashboardLayout = ({ children }) => {
   return (
-    <section className="flex h-screen overflow-hidden">
+    <section className="flex min-h-screen overflow-hidden">
       <Sidebar />
       <div className="h-full w-full">{children}</div>
     </section>
