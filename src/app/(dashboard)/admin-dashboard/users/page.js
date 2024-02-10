@@ -1,7 +1,15 @@
+import UsersTable from "@/components/dashboard/users-table/users-table";
 import { Button } from "@/components/ui/button";
+import { dummyUserData } from "@/lib/dummy-data";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+//TODO: Make this function async and fetch data form DB Later
+
 const UsersPage = () => {
+  //! Dummy Data
+
+  const userData = dummyUserData;
+
   return (
     <section className="p-3 lg:p-6">
       {/* Breadcrumbs? Kinda sorta －_－ */}
@@ -22,6 +30,8 @@ const UsersPage = () => {
       </section>
 
       {/* //TODO: Need to build a table using tanstack table and shadcn ui but don't know how to do it without typescript. ahhhhhhh */}
+
+      <UsersTable userData={userData} />
     </section>
   );
 };
