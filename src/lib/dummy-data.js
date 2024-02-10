@@ -98,15 +98,6 @@ export const dummyUserData = [
     role: "normie",
   },
   {
-    _id: "65bd263936f1dcfb6ac0c775",
-    email: "cow@hamba.com",
-    username: "Cow",
-    photoURL:
-      "https://i.ibb.co/rMk043C/luke-stackpoole-Rx-Hhx-Wn-Xm-Ns-unsplash.jpg",
-    __v: 0,
-    role: "normie",
-  },
-  {
     _id: "65bd287836f1dcfb6ac0c778",
     email: "postman@test.com",
     username: "Postman Test",
