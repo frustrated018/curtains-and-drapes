@@ -2,6 +2,7 @@
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { userColumns } from "./user-columns";
@@ -25,7 +26,15 @@ const UsersTable = ({ userData }) => {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageSize: 15,
+        pageIndex: 0,
+      },
+    },
   });
+
   return (
     <section className="my-5">
       <div className="h-full rounded-lg border">
@@ -75,17 +84,37 @@ const UsersTable = ({ userData }) => {
               )}
             </TableBody>
           </Table>
-          {/* //! Next & Previous Buttons */}
-          <div className="flex justify-end space-x-2 border-t py-5 pr-12">
-            <Button variant="outline" size="sm">
-              Previous
-            </Button>
-            <Button variant="outline" size="sm">
-              Next
-            </Button>
-          </div>
         </ScrollArea>
       </div>
+      {/* //! Next & Previous Buttons */}
+      <section className="flex items-center justify-between pt-3">
+        <div className="text-muted-foreground pl-3 text-sm">
+          Page{" "}
+          <strong>
+            {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getPageCount()}
+          </strong>
+        </div>
+
+        <div className="space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
+      </section>
     </section>
   );
 };
