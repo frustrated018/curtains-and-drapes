@@ -14,8 +14,8 @@ export const userColumns = [
     cell: ({ row }) => {
       return (
         <div className="pl-2">
-          <Avatar className="h-14 w-14">
-            <AvatarImage src={row.original?.photoURL} alt="User Image" />
+          <Avatar className="h-10 w-10">
+            <AvatarImage src={row.original?.photoURL} alt="User Image" className="h-10 w-10" />
             <AvatarFallback>DP</AvatarFallback>
           </Avatar>
         </div>
