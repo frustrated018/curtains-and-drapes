@@ -5,7 +5,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 //! Fetching data on the server and drilling down to user table
 
 async function getUserData() {
-  const res = await fetch("https://curtains-and-drapes.vercel.app/api/users");
+  const res = await fetch("https://curtains-and-drapes.vercel.app/api/users",{next:{revalidate:100}} );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
