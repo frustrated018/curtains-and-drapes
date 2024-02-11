@@ -14,11 +14,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 
 const UsersTable = ({ userData }) => {
   const columns = userColumns;
   const data = userData;
 
+  //! Table function
   const table = useReactTable({
     data,
     columns,
@@ -26,7 +28,7 @@ const UsersTable = ({ userData }) => {
   });
   return (
     <section className="my-5">
-      <div className="mx-auto h-full w-[90%] rounded-lg border">
+      <div className="h-full rounded-lg border">
         <ScrollArea className="h-[65vh]">
           <Table>
             {/* //! Header */}
@@ -73,6 +75,15 @@ const UsersTable = ({ userData }) => {
               )}
             </TableBody>
           </Table>
+          {/* //! Next & Previous Buttons */}
+          <div className="flex justify-end space-x-2 border-t py-5 pr-12">
+            <Button variant="outline" size="sm">
+              Previous
+            </Button>
+            <Button variant="outline" size="sm">
+              Next
+            </Button>
+          </div>
         </ScrollArea>
       </div>
     </section>
