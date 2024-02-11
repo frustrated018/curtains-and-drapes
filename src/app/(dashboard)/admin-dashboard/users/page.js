@@ -1,14 +1,21 @@
 import UsersTable from "@/components/dashboard/users-table/users-table";
 import { Button } from "@/components/ui/button";
-import { dummyUserData } from "@/lib/dummy-data";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-//TODO: Make this function async and fetch data form DB Later
+//! Fetching data on the server and drilling down to user table
 
-const UsersPage = () => {
-  //! Dummy Data
+async function getUserData() {
+  const res = await fetch("https://curtains-and-drapes.vercel.app/api/users");
 
-  const userData = dummyUserData;
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const UsersPage = async () => {
+  const data = await getUserData();
 
   return (
     <section className="p-3 lg:p-6">
@@ -28,10 +35,8 @@ const UsersPage = () => {
         </div>
         <Button>Add User</Button>
       </section>
-
-      {/* //TODO: Need to build a table using tanstack table and shadcn ui but don't know how to do it without typescript. ahhhhhhh */}
-
-      <UsersTable userData={userData} />
+      {/* //* Table  */}
+      <UsersTable data={data} />
     </section>
   );
 };

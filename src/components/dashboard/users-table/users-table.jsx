@@ -17,9 +17,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 
-const UsersTable = ({ userData }) => {
+const UsersTable = ({ data }) => {
   const columns = userColumns;
-  const data = userData;
 
   //! Table function
   const table = useReactTable({
@@ -88,7 +87,7 @@ const UsersTable = ({ userData }) => {
       </div>
       {/* //! Next & Previous Buttons */}
       <section className="flex items-center justify-between pt-3">
-        <div className="text-muted-foreground pl-3 text-sm">
+        <div className="pl-3 text-sm text-muted-foreground">
           Page{" "}
           <strong>
             {table.getState().pagination.pageIndex + 1} of{" "}
