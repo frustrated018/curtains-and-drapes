@@ -252,6 +252,10 @@ export const dummyUserData = [
 
 export const dummyProductsData = [
   {
+    id:"riiuotiw4341324@#$",
+    status:"available",
+    inStock:"10",
+    productId:"aldkjf3423",
     name: "product1",
     price: "200",
     shortDescription: "lorem ida dsasd",
@@ -267,7 +271,11 @@ export const dummyProductsData = [
     features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
   },
   {
-    name: "product2",
+    id:"riiuotiw4341324@#$",
+    status:"available",
+    inStock:"10",
+    productId:"aldkjf3423",
+    name: "product1",
     price: "200",
     shortDescription: "lorem ida dsasd",
     description: "longer description of 50 words",
@@ -282,7 +290,11 @@ export const dummyProductsData = [
     features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
   },
   {
-    name: "product3",
+    id:"riiuotiw4341324@#$",
+    status:"available",
+    inStock:"10",
+    productId:"aldkjf3423",
+    name: "product1",
     price: "200",
     shortDescription: "lorem ida dsasd",
     description: "longer description of 50 words",
@@ -296,4 +308,24 @@ export const dummyProductsData = [
     ],
     features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
   },
+  {
+    id:"riiuotiw4341324@#$",
+    status:"available",
+    inStock:"10",
+    productId:"aldkjf3423",
+    name: "product1",
+    price: "200",
+    shortDescription: "lorem ida dsasd",
+    description: "longer description of 50 words",
+    pictures: [
+      {
+        img1: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+      {
+        img2: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+    ],
+    features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
+  },
+  
 ];

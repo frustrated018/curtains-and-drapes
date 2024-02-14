@@ -7,6 +7,7 @@ const ProductsPage = () => {
   //! Dummy data
   const data = dummyProductsData;
 
+
   return (
     <section className="min-h-screen p-3 lg:p-6">
       {/* Breadcrumbs? Kinda sorta －_－ */}
@@ -26,7 +27,7 @@ const ProductsPage = () => {
         <Button>Add Product</Button>
       </section>
       {/* //* Table  */}
-      <ProductsTable data={data} />
+      <ProductsTable data={data}/>
     </section>
   );
 };
