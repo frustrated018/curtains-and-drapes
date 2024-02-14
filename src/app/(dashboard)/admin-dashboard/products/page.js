@@ -1,7 +1,12 @@
+import ProductsTable from "@/components/dashboard/products-table/products-table";
 import { Button } from "@/components/ui/button";
+import { dummyProductsData } from "@/lib/dummy-data";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 const ProductsPage = () => {
+  //! Dummy data
+  const data = dummyProductsData;
+
   return (
     <section className="min-h-screen p-3 lg:p-6">
       {/* Breadcrumbs? Kinda sorta －_－ */}
@@ -21,6 +26,7 @@ const ProductsPage = () => {
         <Button>Add Product</Button>
       </section>
       {/* //* Table  */}
+      <ProductsTable data={data} />
     </section>
   );
 };

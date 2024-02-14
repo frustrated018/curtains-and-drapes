@@ -87,7 +87,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -95,7 +96,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -103,7 +105,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -111,7 +114,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -119,7 +123,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -127,7 +132,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -135,7 +141,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -143,7 +150,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -151,7 +159,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -159,7 +168,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -167,7 +177,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -175,7 +186,8 @@ export const dummyUserData = [
       "https://i.ibb.co/VQ7NdPQ/mateusz-bajdak-2-NXf31qalc-unsplash.jpg",
     __v: 0,
     role: "moderator",
-  },{
+  },
+  {
     _id: "65bd24b436f1dcfb6ac0c771",
     email: "otter@nothing.com",
     username: "Otter",
@@ -235,5 +247,53 @@ export const dummyUserData = [
     photoURL: "https://i.ibb.co/2W63Xyn/joel-filipe-Qwo-NAhbm-postman.jpg",
     __v: 0,
     role: "normie",
+  },
+];
+
+export const dummyProductsData = [
+  {
+    name: "product1",
+    price: "200",
+    shortDescription: "lorem ida dsasd",
+    description: "longer description of 50 words",
+    pictures: [
+      {
+        img1: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+      {
+        img2: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+    ],
+    features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
+  },
+  {
+    name: "product2",
+    price: "200",
+    shortDescription: "lorem ida dsasd",
+    description: "longer description of 50 words",
+    pictures: [
+      {
+        img1: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+      {
+        img2: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+    ],
+    features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
+  },
+  {
+    name: "product3",
+    price: "200",
+    shortDescription: "lorem ida dsasd",
+    description: "longer description of 50 words",
+    pictures: [
+      {
+        img1: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+      {
+        img2: "https://source.unsplash.com/closed-window-with-mesh-curtain-W0z39EPR_ZM",
+      },
+    ],
+    features: [{ feature1: "blah blah blah" }, { feature2: "blah blah blah" }],
   },
 ];
