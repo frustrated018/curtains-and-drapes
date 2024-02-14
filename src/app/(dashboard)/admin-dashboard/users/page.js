@@ -32,7 +32,7 @@ const UsersPage = async () => {
 
       <section className="mt-5 flex items-center justify-between border-b">
         <div className="mb-2 space-y-1">
-          <h2 className="text-3xl font-semibold">Users(10)</h2>
+          <h2 className="text-3xl font-semibold">Users ({data.length})</h2>
           <p className="text-muted-foreground">All the users in database.</p>
         </div>
         <Button>Add User</Button>
