@@ -1,3 +1,4 @@
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -55,14 +56,14 @@ const HomePageFooter = () => {
           © 2023-2024 Curtains & Drapes Inc. All rights reserved | Designed in
           Bangladesh
         </p>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground flex flex-initial gap-1">
           Crafted by{" "}
           <a
             href="https://github.com/frustrated018"
             target="_blank"
-            className=" hover:text-white hover:underline"
+            className=" hover:text-primary hover:underline flex justify-center items-center"
           >
-            frustrated018
+            frustrated018 <ArrowTopRightIcon />
           </a>
         </div>
       </section>
