@@ -19,23 +19,23 @@ import { Button } from "@/components/ui/button";
 import { productsColumn } from "./products-column";
 
 const ProductsTable = ({ data }) => {
-    const columns = productsColumn;
+  const columns = productsColumn;
   //! Table function
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 15,
+        pageSize: 10,
         pageIndex: 0,
       },
     },
   });
+  
 
-  //   console.log(table);
+    // console.log(table.getIsAllRowsSelected());
 
   return (
     <section className="my-5">

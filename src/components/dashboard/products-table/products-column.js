@@ -10,20 +10,21 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 export const productsColumn = [
-  {
-    id: "select",
-    header: ({ row }) => {
-      console.log(row);
-      return (
-        <Checkbox
-          //   checked={table.getIsAllPageRowsSelected()}
-          //   onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      );
-    },
+    {
+        id: "select",
+        header: ({table}) => {
+            //! ISSUE: Table returns undefined! WHYYYYYY??????
+          console.log(table);
+          return (
+            <Checkbox
+              // checked={table.getIsAllPageRowsSelected()}
+              // onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+              aria-label="Select all"
+            />
+          );
+        },
     cell: ({ row }) => {
-      //   console.log(row);
+        // console.log(row);
       return (
         <Checkbox
           checked={row.getIsSelected()}
