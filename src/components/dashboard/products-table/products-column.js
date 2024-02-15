@@ -38,12 +38,12 @@ export const productsColumn = [
   {
     header: "Product Image",
     cell: ({ row }) => {
-      //   console.log(row.original.pictures[0].img1);
+        // console.log(row.original.pictures);
       return (
         <div className="pl-2">
           <Avatar className="h-10 w-10">
             <AvatarImage
-              src={row.original?.pictures[0]?.img1}
+              src={row.original?.pictures[0]?.img}
               alt="Product Image"
               className="h-10 w-10"
             />
