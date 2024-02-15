@@ -12,6 +12,7 @@ const productSchema = new Schema({
   productId: {
     type: String,
     required: true,
+    unique: true,
   },
   name: {
     type: String,
@@ -49,4 +50,4 @@ const productSchema = new Schema({
 
 const Product = models.Product || model("Product", productSchema);
 
-export default Product
+export default Product;

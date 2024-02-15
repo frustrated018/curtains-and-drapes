@@ -20,7 +20,17 @@ export const GET = async () => {
 export const POST = async (request) => {
   try {
     const body = await request.json();
+
+    // console.log(body.productId);
+
     //! Check If Product Already exists in db
+    const exisingProduct = await Product.exists({
+      productId: body?.productId,
+    });
+
+    if (exisingProduct) {
+      return new NextResponse("Product Aleady exists", { status: 400 });
+    }
 
     //* If Doesn't exist add new product
     const newProduct = new Product(body);
