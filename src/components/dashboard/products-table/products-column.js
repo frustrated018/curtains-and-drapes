@@ -47,7 +47,7 @@ export const productsColumn = [
               alt="Product Image"
               className="h-10 w-10"
             />
-            <AvatarFallback>product image</AvatarFallback>
+            <AvatarFallback>PI</AvatarFallback>
           </Avatar>
         </div>
       );
@@ -101,7 +101,8 @@ export const productsColumn = [
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="flex flex-col gap-2">
-              <Button variant="secondary">Update</Button>
+              <Button variant="secondary">Update Product</Button>
+              <Button variant="secondary">Update Status</Button>
               <Button variant="destructive">Delete</Button>
             </DropdownMenuContent>
           </DropdownMenu>
