@@ -460,7 +460,7 @@ export const dummyProductsData = [
       "A longer description of Product 8 with at least 50 words lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, justo eget congue dapibus, justo felis bibendum massa, in pellentesque quam erat id neque.",
     pictures: [
       {
-        img: "https://source.unsplash.com/white-glass-panel-curtains-SlpsgiZsSNk",
+        img: "",
       },
       {
         img: "https://source.unsplash.com/white-glass-panel-curtains-SlpsgiZsSNk",

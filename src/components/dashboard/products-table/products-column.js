@@ -47,7 +47,7 @@ export const productsColumn = [
               alt="Product Image"
               className="h-10 w-10 rounded-sm xl:h-14 xl:w-14"
             />
-            <AvatarFallback>PI</AvatarFallback>
+            <AvatarFallback className="h-10 w-10 rounded-sm xl:h-14 xl:w-14">Product Image</AvatarFallback>
           </Avatar>
         </div>
       );
