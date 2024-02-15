@@ -10,21 +10,21 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 export const productsColumn = [
-    {
-        id: "select",
-        header: ({table}) => {
-            //! ISSUE: Table returns undefined! WHYYYYYY??????
-          console.log(table);
-          return (
-            <Checkbox
-              // checked={table.getIsAllPageRowsSelected()}
-              // onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-              aria-label="Select all"
-            />
-          );
-        },
+  {
+    id: "select",
+    header: ({ table }) => {
+      //! ISSUE: Table returns undefined! WHYYYYYY??????
+      console.log(table);
+      return (
+        <Checkbox
+          // checked={table.getIsAllPageRowsSelected()}
+          // onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      );
+    },
     cell: ({ row }) => {
-        // console.log(row);
+      // console.log(row);
       return (
         <Checkbox
           checked={row.getIsSelected()}
@@ -53,16 +53,37 @@ export const productsColumn = [
     },
   },
   {
+    accessorKey: "productId",
+    header: "Product ID",
+    cell: ({ row }) => {
+      console.log(row.original);
+      return <div>{row.getValue("productId")}</div>;
+    },
+  },
+  {
     accessorKey: "name",
     header: "Product Name",
     cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
-
   {
     // TODO: Update this to a button and Make it sort by price
     accessorKey: "price",
     header: "Price",
     cell: ({ row }) => <div>{row.getValue("price")}</div>,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      return <div>{row.getValue("status")}</div>;
+    },
+  },
+  {
+    accessorKey: "inStock",
+    header: "In Stock",
+    cell: ({ row }) => {
+      return <div>{row.getValue("inStock")}</div>;
+    },
   },
   {
     header: "Actions",
