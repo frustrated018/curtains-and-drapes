@@ -61,6 +61,7 @@ export const productsColumn = [
     },
   },
   {
+    // TODO: Sort alphabetically 
     accessorKey: "name",
     header: "Product Name",
     cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
@@ -72,6 +73,7 @@ export const productsColumn = [
     cell: ({ row }) => <div>{row.getValue("price")}</div>,
   },
   {
+    // TODO: Add a dropdown to sort by status
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
@@ -79,6 +81,7 @@ export const productsColumn = [
     },
   },
   {
+    // TODO: Enable sorting in ascending or descending order
     accessorKey: "inStock",
     header: "In Stock",
     cell: ({ row }) => {
