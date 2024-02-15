@@ -14,3 +14,25 @@ export const GET = async () => {
     });
   }
 };
+
+// Adding/Posting a Product
+
+export const POST = async (request) => {
+  try {
+    const body = await request.json();
+    //! Check If Product Already exists in db
+
+    //* If Doesn't exist add new product
+    const newProduct = new Product(body);
+    await newProduct.save();
+
+    // console.log(newProduct);
+
+    return new NextResponse("successfully added product", { status: 200 });
+  } catch (error) {
+    console.log("Error in Adding Product:" + error);
+    return new NextResponse("Error in adding Product: " + error, {
+      status: 500,
+    });
+  }
+};

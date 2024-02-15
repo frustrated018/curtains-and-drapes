@@ -19,6 +19,7 @@ const connect = async () => {
     await mongoose.connect(MONGODB_URI, {
       dbName: "Curtains&Drapes_DB",
       bufferCommands: false,
+      serverSelectionTimeoutMS: 30000,
     });
     console.log("Connected to DB");
   } catch (error) {
