@@ -38,14 +38,14 @@ export const productsColumn = [
   {
     header: "Product Image",
     cell: ({ row }) => {
-        // console.log(row.original.pictures);
+      // console.log(row.original.pictures);
       return (
         <div className="pl-2">
-          <Avatar className="h-10 w-10">
+          <Avatar className="h-10 w-10 rounded-sm xl:h-14 xl:w-14">
             <AvatarImage
               src={row.original?.pictures[0]?.img}
               alt="Product Image"
-              className="h-10 w-10"
+              className="h-10 w-10 rounded-sm xl:h-14 xl:w-14"
             />
             <AvatarFallback>PI</AvatarFallback>
           </Avatar>
@@ -100,7 +100,7 @@ export const productsColumn = [
                 <DotsHorizontalIcon className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="flex flex-col gap-2">
+            <DropdownMenuContent className="flex flex-col gap-1">
               <Button variant="secondary">Update Product</Button>
               <Button variant="secondary">Update Status</Button>
               <Button variant="destructive">Delete</Button>
