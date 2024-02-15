@@ -24,9 +24,10 @@ export const POST = async (request) => {
     // console.log(body.productId);
 
     //! Check If Product Already exists in db
-    const exisingProduct = await Product.exists({
-      productId: body?.productId,
-    });
+    const filter = {
+      $or: [{ productId: body?.productId }, { name: body?.name }],
+    };
+    const exisingProduct = await Product.exists(filter);
 
     if (exisingProduct) {
       return new NextResponse("Product Aleady exists", { status: 400 });
