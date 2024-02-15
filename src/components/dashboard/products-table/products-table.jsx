@@ -17,9 +17,13 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { productsColumn } from "./products-column";
+import { useState } from "react";
 
 const ProductsTable = ({ data }) => {
   const columns = productsColumn;
+
+  const [rowSelection, setRowSelection] = useState({});
+
   //! Table function
   const table = useReactTable({
     data,
@@ -32,10 +36,12 @@ const ProductsTable = ({ data }) => {
         pageIndex: 0,
       },
     },
+    state: {
+      rowSelection: rowSelection,
+    },
+    onRowSelectionChange: setRowSelection,
+    enableRowSelection: true,
   });
-  
-
-    // console.log(table.getIsAllRowsSelected());
 
   return (
     <section className="my-5">
@@ -49,7 +55,10 @@ const ProductsTable = ({ data }) => {
                   {headergroup.headers.map((header) => {
                     return (
                       <TableHead key={header.id}>
-                        {flexRender(header.column.columnDef.header)}
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                       </TableHead>
                     );
                   })}

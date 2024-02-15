@@ -13,12 +13,13 @@ export const productsColumn = [
   {
     id: "select",
     header: ({ table }) => {
-      //! ISSUE: Table returns undefined! WHYYYYYY??????
-      console.log(table);
       return (
         <Checkbox
-          // checked={table.getIsAllPageRowsSelected()}
-          // onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
         />
       );
@@ -56,12 +57,11 @@ export const productsColumn = [
     accessorKey: "productId",
     header: "Product ID",
     cell: ({ row }) => {
-      console.log(row.original);
       return <div>{row.getValue("productId")}</div>;
     },
   },
   {
-    // TODO: Sort alphabetically 
+    // TODO: Sort alphabetically
     accessorKey: "name",
     header: "Product Name",
     cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
