@@ -2,12 +2,40 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { toast } from "sonner";
+
+//! Deleting products
+const handleDelete = async () => {
+  console.log("button clicked");
+
+  toast("Are you sure?", {
+    description: "Once you delete you can't get it back",
+    duration: 5000,
+    action: {
+      label: "Yes Delete it",
+      onClick: () => console.log("Deleted"),
+    },
+    cancel: {
+      label: "No Go back",
+    },
+  });
+};
 
 export const productsColumn = [
   {
@@ -47,7 +75,9 @@ export const productsColumn = [
               alt="Product Image"
               className="h-10 w-10 rounded-sm xl:h-14 xl:w-14"
             />
-            <AvatarFallback className="h-10 w-10 rounded-sm xl:h-14 xl:w-14">Product Image</AvatarFallback>
+            <AvatarFallback className="h-10 w-10 rounded-sm xl:h-14 xl:w-14">
+              Product Image
+            </AvatarFallback>
           </Avatar>
         </div>
       );
@@ -93,19 +123,41 @@ export const productsColumn = [
     cell: ({ row }) => {
       return (
         <div className="pl-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <DotsHorizontalIcon className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="flex flex-col gap-1">
-              <Button variant="secondary">Update Product</Button>
-              <Button variant="secondary">Update Status</Button>
-              <Button variant="destructive">Delete</Button>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Dialog>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <DotsHorizontalIcon className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="flex flex-col gap-1">
+                <Button variant="secondary">Update Product</Button>
+                <Button variant="secondary">Update Status</Button>
+                {/* trigger for modal */}
+                <DialogTrigger asChild>
+                  <Button variant="destructive">Delete</Button>
+                </DialogTrigger>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            {/* Delete Modal */}
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                <DialogDescription>
+                  This action cannot be undone. Are you sure you want to
+                  permanently delete this file from our servers?
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose>
+                  <Button type="submit" onClick={handleDelete}>
+                    Confirm
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       );
     },
