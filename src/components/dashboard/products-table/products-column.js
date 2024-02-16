@@ -22,14 +22,26 @@ import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { toast } from "sonner";
 
 //! Deleting products
-const handleDelete = async () => {
-  //  perfom api call and show relavent toast
+const handleDelete = async (id) => {
+  console.log("id form handleDelete: ", id);
+  try {
+    const res = await fetch(`/api/products?id=${id}`, { method: "DELETE" });
 
-  toast.success("Product has been deleted", { duration: 5000 });
-  toast.error("Couldn't delete product", {
-    duration: 5000,
-    description: "Relavant error",
-  });
+    if (!res.ok) {
+      const errorMessage = await res.text();
+      throw new Error(`Failed to delete product: ${errorMessage}`);
+    }
+
+    toast.success("Product has been deleted", { duration: 3000 });
+
+    //!Issue: Can delete Products with this buuttt can't update the ui [Revalidate the data here] Tried using server actions for non form components but it only executes POST requests so can't delete from there... do i need to sue tanstack query?
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    toast.error("Couldn't delete product", {
+      duration: 5000,
+      description: "An error occurred while trying to delete the product.",
+    });
+  }
 };
 
 export const productsColumn = [
@@ -116,6 +128,7 @@ export const productsColumn = [
   {
     header: "Actions",
     cell: ({ row }) => {
+      // console.log(row.original._id);
       return (
         <div className="pl-2">
           <Dialog>
@@ -151,17 +164,17 @@ export const productsColumn = [
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
-                <DialogClose>
+                <DialogClose asChild>
                   <Button
                     variant="destructive"
                     type="submit"
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(row.original._id)}
                   >
                     Confirm
                   </Button>
                 </DialogClose>
-                <DialogClose>
-                  <Button>Close</Button>
+                <DialogClose asChild>
+                  <Button variant="secondary">Close</Button>
                 </DialogClose>
               </DialogFooter>
             </DialogContent>

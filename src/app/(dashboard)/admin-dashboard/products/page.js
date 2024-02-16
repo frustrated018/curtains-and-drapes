@@ -1,11 +1,11 @@
 import ProductsTable from "@/components/dashboard/products-table/products-table";
 import { Button } from "@/components/ui/button";
-import { dummyProductsData } from "@/lib/dummy-data";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 const getProductsData = async () => {
   const res = await fetch(
     "https://curtains-and-drapes.vercel.app/api/products",
+    { next: { tags: ["blah"], revalidate: 3600 } },
   );
 
   if (!res.ok) {
