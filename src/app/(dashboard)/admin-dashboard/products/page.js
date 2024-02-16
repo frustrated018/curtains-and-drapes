@@ -3,9 +3,21 @@ import { Button } from "@/components/ui/button";
 import { dummyProductsData } from "@/lib/dummy-data";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-const ProductsPage = () => {
+const getProductsData = async () => {
+  const res = await fetch(
+    "https://curtains-and-drapes.vercel.app/api/products",
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch product Data");
+  }
+
+  return res.json();
+};
+
+const ProductsPage = async () => {
   //! Dummy data
-  const data = dummyProductsData;
+  const data = await getProductsData();
 
   return (
     <section className="min-h-screen p-3 lg:p-6">
