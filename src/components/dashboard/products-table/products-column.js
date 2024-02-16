@@ -14,6 +14,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
@@ -22,18 +23,12 @@ import { toast } from "sonner";
 
 //! Deleting products
 const handleDelete = async () => {
-  console.log("button clicked");
+  //  perfom api call and show relavent toast
 
-  toast("Are you sure?", {
-    description: "Once you delete you can't get it back",
+  toast.success("Product has been deleted", { duration: 5000 });
+  toast.error("Couldn't delete product", {
     duration: 5000,
-    action: {
-      label: "Yes Delete it",
-      onClick: () => console.log("Deleted"),
-    },
-    cancel: {
-      label: "No Go back",
-    },
+    description: "Relavant error",
   });
 };
 
@@ -132,12 +127,18 @@ export const productsColumn = [
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="flex flex-col gap-1">
-                <Button variant="secondary">Update Product</Button>
-                <Button variant="secondary">Update Status</Button>
+                <DropdownMenuItem asChild>
+                  <Button variant="secondary">Update Status</Button>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Button variant="secondary">Update Product</Button>
+                </DropdownMenuItem>
                 {/* trigger for modal */}
-                <DialogTrigger asChild>
-                  <Button variant="destructive">Delete</Button>
-                </DialogTrigger>
+                <DropdownMenuItem asChild>
+                  <DialogTrigger asChild>
+                    <Button variant="destructive">Delete</Button>
+                  </DialogTrigger>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             {/* Delete Modal */}
@@ -146,14 +147,21 @@ export const productsColumn = [
                 <DialogTitle>Are you absolutely sure?</DialogTitle>
                 <DialogDescription>
                   This action cannot be undone. Are you sure you want to
-                  permanently delete this file from our servers?
+                  permanently delete this Product from the servers?
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
                 <DialogClose>
-                  <Button type="submit" onClick={handleDelete}>
+                  <Button
+                    variant="destructive"
+                    type="submit"
+                    onClick={handleDelete}
+                  >
                     Confirm
                   </Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button>Close</Button>
                 </DialogClose>
               </DialogFooter>
             </DialogContent>

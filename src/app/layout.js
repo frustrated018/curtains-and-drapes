@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           {children}
         </ThemeProvider>
         <ToastContainer />
-        <Toaster />
+        <Toaster richColors closeButton position="top-right" invert={true} />
       </body>
     </html>
   );
