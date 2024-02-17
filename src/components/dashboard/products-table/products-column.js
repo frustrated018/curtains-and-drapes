@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -19,28 +21,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { deleteProduct } from "./product-actions";
 import { toast } from "sonner";
 
-//! Deleting products
+
+//! Handling delete action 
 const handleDelete = async (id) => {
-  console.log("id form handleDelete: ", id);
   try {
-    const res = await fetch(`/api/products?id=${id}`, { method: "DELETE" });
-
-    if (!res.ok) {
-      const errorMessage = await res.text();
-      throw new Error(`Failed to delete product: ${errorMessage}`);
-    }
-
-    toast.success("Product has been deleted", { duration: 3000 });
-
-    //!Issue: Can delete Products with this buuttt can't update the ui [Revalidate the data here] Tried using server actions for non form components but it only executes POST requests so can't delete from there... do i need to sue tanstack query?
+    await deleteProduct(id);
+    toast.success("Success delete");
   } catch (error) {
-    console.error("Error deleting product:", error);
-    toast.error("Couldn't delete product", {
-      duration: 5000,
-      description: "An error occurred while trying to delete the product.",
-    });
+    console.log("Error from Handle delete:", error);
+    toast.error("Failed to delete", { description: `${error.message}`, duration:5000 });
   }
 };
 

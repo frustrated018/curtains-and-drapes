@@ -1,3 +1,4 @@
+import { productsColumn } from "@/components/dashboard/products-table/products-column";
 import ProductsTable from "@/components/dashboard/products-table/products-table";
 import { Button } from "@/components/ui/button";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -5,7 +6,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 const getProductsData = async () => {
   const res = await fetch(
     "https://curtains-and-drapes.vercel.app/api/products",
-    { next: { tags: ["blah"], revalidate: 3600 } },
+    { next: { tags: ["all-products-revalidate"], revalidate: 3600 } },
   );
 
   if (!res.ok) {
@@ -16,8 +17,9 @@ const getProductsData = async () => {
 };
 
 const ProductsPage = async () => {
-  //! Dummy data
+// Fetching data from the server
   const data = await getProductsData();
+ 
 
   return (
     <section className="min-h-screen p-3 lg:p-6">
@@ -38,7 +40,7 @@ const ProductsPage = async () => {
         <Button>Add Product</Button>
       </section>
       {/* //* Table  */}
-      <ProductsTable data={data} />
+      <ProductsTable data={data} columns={productsColumn} />
     </section>
   );
 };

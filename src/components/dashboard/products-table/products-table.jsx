@@ -16,12 +16,9 @@ import {
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { productsColumn } from "./products-column";
 import { useState } from "react";
 
-const ProductsTable = ({ data }) => {
-  const columns = productsColumn;
-
+const ProductsTable = ({ data, columns }) => {
   const [rowSelection, setRowSelection] = useState({});
 
   //! Table function
