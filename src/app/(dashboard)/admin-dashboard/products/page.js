@@ -17,9 +17,8 @@ const getProductsData = async () => {
 };
 
 const ProductsPage = async () => {
-// Fetching data from the server
+  // Fetching data from the server
   const data = await getProductsData();
- 
 
   return (
     <section className="min-h-screen p-3 lg:p-6">
@@ -34,7 +33,7 @@ const ProductsPage = async () => {
 
       <section className="mt-5 flex items-center justify-between border-b">
         <div className="mb-2 space-y-1">
-          <h2 className="text-3xl font-semibold">Products (100)</h2>
+          <h2 className="text-3xl font-semibold">Products ({data.length})</h2>
           <p className="text-muted-foreground">All the Products in database.</p>
         </div>
         <Button>Add Product</Button>

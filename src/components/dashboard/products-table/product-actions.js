@@ -4,7 +4,7 @@ import { revalidateTag } from "next/cache";
 
 export const deleteProduct = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/products?id=${id}`, {
+    const res = await fetch(`https://curtains-and-drapes.vercel.app/api/products?id=${id}`, {
       method: "DELETE",
     });
 
