@@ -24,15 +24,20 @@ import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { deleteProduct } from "./product-actions";
 import { toast } from "sonner";
 
-
-//! Handling delete action 
+//! Handling delete action
 const handleDelete = async (id) => {
   try {
     await deleteProduct(id);
-    toast.success("Success delete");
+    toast.success("Deleted Successfully", {
+      description: "The product has been Removed from the database.",
+      duration: 3000,
+    });
   } catch (error) {
-    console.log("Error from Handle delete:", error);
-    toast.error("Failed to delete", { description: `${error.message}`, duration:5000 });
+    console.log(error);
+    toast.error("Failed to delete", {
+      description: `${error.message}`,
+      duration: 5000,
+    });
   }
 };
 
