@@ -44,3 +44,9 @@ export const deleteProduct = async (id) => {
 export const refreshTable = () => {
   revalidateTag("all-products-revalidate");
 };
+
+//! Add Product
+
+export const addProduct = () => {
+  console.log("ahhhhh");
+};
