@@ -21,7 +21,7 @@ const ProductForm = () => {
   const [state, formAction] = useFormState(addProduct, initialState);
   const { pending } = useFormStatus();
   return (
-    <>
+    <div className="mt-5">
       <form action={formAction} className="grid grid-cols-1 gap-2">
         <section className="flex flex-col gap-5 xl:flex-row">
           <div className="flex-grow">
@@ -73,20 +73,28 @@ const ProductForm = () => {
           name="descrption"
           placeholder="Write a long description about the product..."
         />
-
-        {/* //TODO: need to figure out how to do multiple image selection T_T */}
-        <Label htmlFor="pictures">Pictures [Max-4]:</Label>
-        <Input name="Pictures" type="file" />
-
-        {/* //TODO: option to add multiple features */}
-        <Label htmlFor="features">Features:</Label>
-        <Input name="features" type="text" />
+        <section className="flex flex-col gap-5 xl:flex-row">
+          <div className="flex-grow">
+            {/* //TODO: need to figure out how to do multiple image selection T_T */}
+            <Label htmlFor="pictures">Pictures [Max-4]:</Label>
+            <Input name="Pictures" type="file" />
+          </div>
+          <div className="flex-grow">
+            {/* //TODO: option to add multiple features */}
+            <Label htmlFor="features">Features:</Label>
+            <Input name="features" type="text" />
+          </div>
+        </section>
 
         <Button type="submit" aria-disabled={pending} className="max-w-xs">
           Add Product
         </Button>
+
+        <p aria-live="polite" className="sr-only" role="status">
+          {state?.message}
+        </p>
       </form>
-    </>
+    </div>
   );
 };
 
