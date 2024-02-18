@@ -250,6 +250,8 @@ export const dummyUserData = [
   },
 ];
 
+//! Dummy Products
+
 export const dummyProductsData = [
   {
     id: "product1_1",

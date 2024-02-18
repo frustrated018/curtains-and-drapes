@@ -1,20 +1,8 @@
 import { productsColumn } from "@/components/dashboard/products-table/products-column";
 import ProductsTable from "@/components/dashboard/products-table/products-table";
-import { Button } from "@/components/ui/button";
 import { MdKeyboardArrowRight } from "react-icons/md";
-
-const getProductsData = async () => {
-  const res = await fetch(
-    "https://curtains-and-drapes.vercel.app/api/products",
-    { next: { tags: ["all-products-revalidate"], revalidate: 3600 } },
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch product Data");
-  }
-
-  return res.json();
-};
+import PageControls from "./page-controls";
+import { getProductsData } from "@/server-actions/products/actions";
 
 const ProductsPage = async () => {
   // Fetching data from the server
@@ -36,7 +24,7 @@ const ProductsPage = async () => {
           <h2 className="text-3xl font-semibold">Products ({data.length})</h2>
           <p className="text-muted-foreground">All the Products in database.</p>
         </div>
-        <Button>Add Product</Button>
+        <PageControls />
       </section>
       {/* //* Table  */}
       <ProductsTable data={data} columns={productsColumn} />
