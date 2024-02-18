@@ -2,7 +2,6 @@
 
 import { revalidateTag } from "next/cache";
 
-
 //! Getting all products data
 
 export const getProductsData = async () => {
@@ -38,4 +37,10 @@ export const deleteProduct = async (id) => {
   } catch (error) {
     throw error;
   }
+};
+
+//! Refresh products table
+
+export const refreshTable = () => {
+  revalidateTag("all-products-revalidate");
 };
