@@ -47,6 +47,7 @@ export const refreshTable = () => {
 
 //! Add Product
 
-export const addProduct = () => {
+export const addProduct = (formData) => {
+  console.log(formData);
   console.log("ahhhhh");
 };

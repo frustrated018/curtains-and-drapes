@@ -62,29 +62,36 @@ const ProductForm = () => {
           </div>
         </section>
 
-        <Label htmlFor="shortDescription">Short Description (20 words):</Label>
-        <Textarea
-          name="shortDescription"
-          placeholder="Write a short description for the product like a tagline..."
-        />
+        <div>
+          <Label htmlFor="shortDescription">
+            Short Description (20 words):
+          </Label>
+          <Textarea
+            name="shortDescription"
+            placeholder="Write a short description for the product like a tagline..."
+          />
+        </div>
 
-        <Label htmlFor="description">Main Description (50-100 words):</Label>
-        <Textarea
-          name="descrption"
-          placeholder="Write a long description about the product..."
-        />
-        <section className="flex flex-col gap-5 xl:flex-row">
-          <div className="flex-grow">
-            {/* //TODO: need to figure out how to do multiple image selection T_T */}
-            <Label htmlFor="pictures">Pictures [Max-4]:</Label>
-            <Input name="Pictures" type="file" />
-          </div>
-          <div className="flex-grow">
-            {/* //TODO: option to add multiple features */}
-            <Label htmlFor="features">Features:</Label>
-            <Input name="features" type="text" />
-          </div>
-        </section>
+        <div>
+          <Label htmlFor="description">Main Description (50-100 words):</Label>
+          <Textarea
+            rows="10"
+            name="descrption"
+            placeholder="Write a long description about the product..."
+          />
+        </div>
+
+        <div className="flex-grow">
+          {/* //TODO: option to add multiple features */}
+          <Label htmlFor="features">Features:</Label>
+          <Input name="features" type="text" />
+        </div>
+        
+        <div className="flex-grow">
+          {/* //TODO: need to figure out how to do multiple image selection T_T */}
+          <Label htmlFor="pictures">Pictures [Max-4]:</Label>
+          <Input name="Pictures" type="file" />
+        </div>
 
         <Button type="submit" aria-disabled={pending} className="max-w-xs">
           Add Product
