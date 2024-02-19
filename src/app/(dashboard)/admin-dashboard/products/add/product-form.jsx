@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { UploadDropzone } from "@/lib/uploadthing";
 import { addProduct } from "@/server-actions/products/actions";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -86,11 +87,23 @@ const ProductForm = () => {
           <Label htmlFor="features">Features:</Label>
           <Input name="features" type="text" />
         </div>
-        
+
         <div className="flex-grow">
           {/* //TODO: need to figure out how to do multiple image selection T_T */}
           <Label htmlFor="pictures">Pictures [Max-4]:</Label>
-          <Input name="Pictures" type="file" />
+          <UploadDropzone className="bg-secondary"
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response 
+              // Set the response url as img:"" objects in prictures array
+              console.log("Files: ", res);
+              alert("Upload Completed");
+            }}
+            onUploadError={(error) => {
+              // Do something with the error.
+              alert(`ERROR! ${error.message}`);
+            }}
+          />
         </div>
 
         <Button type="submit" aria-disabled={pending} className="max-w-xs">
